@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Undangan Metatah Wayan & Gede</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
+      crossorigin="anonymous"
+    />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Ballet:opsz@16..72&family=Bilbo+Swash+Caps&family=Cormorant+Garamond:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --blue: #14213d;
+        --orange: #fca311;
+        --gold: #d4af37;
+        --platinum: #e5e5e5;
+        --shadow: #050505;
+        --white: #ffffff;
+        --cream: #faf8f3;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Cormorant Garamond", "Ancizar Serif", serif;
+        font-weight: 400;
+        color: var(--blue);
+        background-color: var(--white);
+        overflow-x: hidden;
+      }
+
+      body .home,
+      body .time,
+      body .rsvp {
+        position: relative;
+        z-index: 1;
+        overflow: visible;
+      }
+      
+      .main-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      body .home::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background-image: url(img/background-ornament-2.png);
+        background-repeat: repeat;
+        background-position: center;
+      }
+
+      body .home::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 40%);
+      }
+
+      body .time::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background-image: url(img/background-ornament-2.png);
+        background-repeat: repeat;
+        background-position: center;
+        opacity: 1;
+      }
+
+      body .rsvp::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background-image: url(img/background-ornament-2.png);
+        background-repeat: repeat;
+        background-position: center;
+      }
+
+      body .rsvp::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 1) 100%);
+        pointer-events: none;
+      }
+
+      /* Music Control Button */
+      .music-control {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 9998;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--blue), var(--orange));
+        border: 3px solid var(--gold);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        animation: pulse 2s infinite;
+      }
+
+      .music-control:hover {
+        transform: scale(1.1);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      .music-control i {
+        font-size: 1.8rem;
+        color: var(--white);
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        50% {
+          box-shadow: 0 8px 30px rgba(228, 226, 222, 0.6);
+        }
+      }
+
+      /* Cover Page */
+      .cover-page {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--white);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.8s ease, visibility 0.8s ease;
+      }
+
+      .cover-page.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-image: url(img/mandala-op15.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 600px;
+      }
+
+      .hero {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-height: 100vh;
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .hero .ornamen {
+        position: absolute;
+        z-index: 2;
+        width: 700px;
+        opacity: 0.3;
+        animation: fadeInScale 1.5s ease forwards;
+      }
+
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .hero .ornamen-kanan {
+        bottom: -4rem;
+        right: -5rem;
+        transform: rotate(30deg);
+      }
+
+      .hero .ornamen-kiri {
+        top: -4rem;
+        left: -10rem;
+        transform: rotate(30deg);
+      }
+
+      .hero h2 {
+        font-family: "Ballet";
+        margin: 1.5rem 0;
+        font-size: 70px;
+        color: var(--blue);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        animation: fadeInUp 1s ease 0.5s backwards;
+        line-height: 1.2;
+      }
+
+      .hero h1 {
+        font-size: 60px;
+        color: var(--blue);
+        animation: fadeInUp 1s ease 0.7s backwards;
+        margin: 0.5rem 0;
+      }
+
+      .hero h3 {
+        margin: 1.5rem 0 0.5rem 0;
+        font-size: 22px;
+        font-style: italic;
+        color: var(--blue);
+        animation: fadeInUp 1s ease 0.9s backwards;
+      }
+
+      .hero p {
+        font-size: 24px;
+        color: var(--blue);
+        animation: fadeInUp 1s ease 1.1s backwards;
+        margin: 0.5rem 0;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero a {
+        font-size: 24px;
+        color: var(--white);
+        background-color: var(--blue);
+        box-shadow: 0 4px 10px var(--shadow);
+        border-radius: 20px;
+        padding: 10px 30px;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        margin-top: 2rem;
+        animation: fadeInUp 1s ease 1.3s backwards;
+      }
+
+      .hero a:hover {
+        color: var(--blue);
+        background-color: var(--white);
+        border: 1px solid var(--blue);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px var(--shadow);
+      }
+
+      /* Main Content - Hidden by default */
+      .main-content {
+        display: none;
+      }
+
+      .main-content.active {
+        display: block;
+      }
+
+      .home,
+      .time,
+      .rsvp {
+        text-align: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+      }
+
+      .home h1 {
+        font-size: 60px;
+        padding-top: 5rem;
+        padding-bottom: 3rem;
+        font-style: italic;
+      }
+
+      .home p {
+        padding-bottom: 0.6rem;
+      }
+
+      .home h2 {
+        font-style: italic;
+        font-size: 40px;
+        padding: 0.5rem;
+        background: linear-gradient(135deg, var(--blue), var(--orange));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+      }
+
+      .home p {
+        font-size: 18px;
+        font-style: italic;
+      }
+
+      .home .p2 {
+        padding-top: 0.7rem;
+      }
+
+      .home h3 {
+        font-style: italic;
+        font-weight: 300;
+        font-size: 24px;
+      }
+
+      .home .ornamen-home,
+      .time .ornamen-time {
+        padding-top: 5rem;
+        width: 100%;
+        max-width: 500px;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Countdown Timer */
+      .countdown-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 3rem 0;
+        flex-wrap: wrap;
+      }
+
+      .countdown-box {
+        background: linear-gradient(135deg, rgba(20, 33, 61, 0.05), rgba(252, 163, 17, 0.05));
+        border: 2px solid var(--gold);
+        border-radius: 15px;
+        padding: 20px;
+        min-width: 100px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .countdown-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(252, 163, 17, 0.3);
+      }
+
+      .countdown-box .number {
+        font-size: 3rem;
+        font-weight: 700;
+        display: block;
+        background: linear-gradient(135deg, var(--blue), var(--orange));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .countdown-box .label {
+        font-size: 1rem;
+        font-style: italic;
+        margin-top: 5px;
+        color: var(--blue);
+      }
+
+      .time {
+        font-style: italic;
+      }
+
+      .time .col-time {
+        border: 3px solid var(--gold);
+        border-radius: 30px;
+        border-style: double;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 2rem;
+        background: linear-gradient(135deg, rgba(20, 33, 61, 0.03), rgba(252, 163, 17, 0.03));
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        max-width: 600px;
+        transition: all 0.3s ease;
+      }
+
+      .time .col-time:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(212, 175, 55, 0.3);
+      }
+
+      .time .col-time h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--blue);
+      }
+
+      .time .col-time p {
+        font-size: 1.4rem;
+        line-height: 1.6;
+        color: var(--blue);
+      }
+
+      .time .row p {
+        font-size: 1.5rem;
+      }
+
+      .time .row .p-info {
+        padding-top: 1.3rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      .time h1.head-time {
+        padding-top: 5rem;
+        padding-bottom: 2rem;
+      }
+
+      .time h2 {
+        font-style: italic;
+        padding-bottom: 0.6rem;
+      }
+
+      .time .row h1 {
+        padding: 1rem;
+      }
+
+      /* RSVP Form */
+      .rsvp {
+        padding-bottom: 3rem;
+      }
+
+      .rsvp h1 {
+        padding-top: 2rem;
+        font-size: 2.5rem;
+      }
+
+      .form-container {
+        position: relative;
+        z-index: 10;
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: linear-gradient(135deg, rgba(20, 33, 61, 0.03), rgba(252, 163, 17, 0.03));
+        border: 2px solid var(--gold);
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .form-container:hover {
+        box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+      }
+
+      .form-container label {
+        position: relative;
+        z-index: 11;
+        font-size: 1.2rem;
+        font-style: italic;
+        margin-bottom: 0.5rem;
+        display: block;
+        text-align: left;
+      }
+
+      .form-container input,
+      .form-container textarea,
+      .form-container select {
+        position: relative;
+        z-index: 11;
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 1.5rem;
+        border: 2px solid var(--gold);
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.95);
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1rem;
+        color: var(--blue);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .form-container input:focus,
+      .form-container textarea:focus,
+      .form-container select:focus {
+        outline: none;
+        border-color: var(--orange);
+        box-shadow: 0 0 10px rgba(252, 163, 17, 0.3);
+      }
+
+      .form-container textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .form-container button {
+        position: relative;
+        z-index: 11;
+        width: 100%;
+        padding: 15px;
+        font-size: 1.3rem;
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 600;
+        color: var(--white);
+        background: linear-gradient(135deg, var(--blue), #1a2a4d);
+        border: 2px solid var(--gold);
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-container button:hover {
+        background: linear-gradient(135deg, var(--orange), #e09400);
+        color: var(--white);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(252, 163, 17, 0.4);
+      }
+
+      .success-message {
+        display: none;
+        background-color: rgba(76, 175, 80, 0.8);
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 1.1rem;
+      }
+
+      /* Messages Display */
+      .messages-container {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 1rem;
+      }
+
+      .message-item {
+        background: linear-gradient(135deg, rgba(20, 33, 61, 0.03), rgba(252, 163, 17, 0.03));
+        border: 1px solid var(--gold);
+        border-radius: 15px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        text-align: left;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .message-item:hover {
+        transform: translateX(5px);
+        box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
+      }
+
+      .message-item .name {
+        font-weight: 700;
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        color: var(--orange);
+      }
+
+      .message-item .status {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .message-item .status.hadir {
+        background-color: rgba(76, 175, 80, 0.8);
+        color: white;
+      }
+
+      .message-item .status.tidak-hadir {
+        background-color: rgba(244, 67, 54, 0.8);
+        color: white;
+      }
+
+      .message-item .message-text {
+        font-size: 1rem;
+        line-height: 1.6;
+        font-style: italic;
+        margin-top: 0.5rem;
+        color: var(--blue);
+      }
+
+      footer {
+        padding-top: 1.3rem;
+        padding-bottom: 1rem;
+      }
+
+      footer p {
+        font-size: 20px;
+      }
+
+      footer .col {
+        text-align: center;
+      }
+
+      footer a {
+        text-decoration: none;
+      }
+
+      footer ul {
+        padding: 0;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      footer li {
+        list-style: none;
+        display: inline;
+        margin: 0.5rem;
+      }
+
+      footer i {
+        font-size: 2rem;
+        color: var(--blue);
+        transition: all 0.3s ease;
+      }
+
+      footer i:hover {
+        color: var(--orange);
+        transform: scale(1.2) rotate(5deg);
+      }
+
+      /* Media Queries */
+      @media (max-width: 768px) {
+        .hero h2 {
+          font-size: 50px;
+        }
+
+        .hero h1 {
+          font-size: 40px;
+        }
+
+        .hero p {
+          font-size: 18px;
+        }
+
+        .hero a {
+          font-size: 18px;
+        }
+
+        .hero .ornamen {
+          width: 400px;
+        }
+
+        .hero .ornamen-kanan {
+          bottom: -2rem;
+          right: -3rem;
+        }
+
+        .hero .ornamen-kiri {
+          top: -2rem;
+          left: -5rem;
+        }
+
+        .home h1 {
+          font-size: 40px;
+          padding-top: 3rem;
+        }
+
+        .home h2 {
+          font-size: 30px;
+        }
+
+        .home h3 {
+          font-size: 20px;
+        }
+
+        .home .p1 {
+          font-size: 16px;
+        }
+
+        .countdown-box .number {
+          font-size: 2rem;
+        }
+
+        .countdown-box {
+          min-width: 70px;
+          padding: 15px;
+        }
+
+        .time .col-time {
+          padding: 1.5rem;
+        }
+
+        .time .col-time h2 {
+          font-size: 1.5rem;
+        }
+
+        .time .col-time p {
+          font-size: 1rem;
+        }
+
+        .time .row p {
+          font-size: 1.1rem;
+        }
+
+        .time .row .p-info {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        .rsvp h1 {
+          font-size: 2rem;
+        }
+
+        .form-container {
+          padding: 1.5rem;
+          margin: 1rem;
+        }
+
+        .form-container label {
+          font-size: 1rem;
+        }
+
+        .form-container button {
+          font-size: 1.1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero h2 {
+          font-size: 35px;
+        }
+
+        .hero h1 {
+          font-size: 30px;
+        }
+
+        .hero .ornamen {
+          width: 300px;
+        }
+
+        .home h1 {
+          font-size: 32px;
+        }
+
+        .home h2 {
+          font-size: 24px;
+        }
+
+        .countdown-box .number {
+          font-size: 1.5rem;
+        }
+
+        .countdown-box .label {
+          font-size: 0.8rem;
+        }
+
+        .time .col-time h2 {
+          font-size: 1.2rem;
+        }
+
+        .time .col-time p {
+          font-size: 0.9rem;
+        }
+
+        footer p {
+          font-size: 16px;
+        }
+
+        footer i {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Music Control Button -->
+    <div class="music-control" id="musicControl">
+      <i class="bi bi-music-note-beamed" id="musicIcon"></i>
+    </div>
+
+    <!-- Audio Element for Balinese Music -->
+    <audio id="bgMusic" loop>
+      <source src="https://www.bensound.com/bensound-music/bensound-happiness.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Cover Page -->
+    <div class="cover-page" id="coverPage">
+      <section class="hero">
+        <main>
+          <img
+            src="img/bunga-1.png"
+            alt="Ornamen Kanan Bawah"
+            class="ornamen ornamen-kanan"
+          />
+          <img
+            src="img/bunga-2.png"
+            alt="Ornamen Kiri Atas"
+            class="ornamen ornamen-kiri"
+          />
+          <h2>Upakara Mepandes</h2>
+          <h3>Kepada</h3>
+          <p>Bapak/Ibu/Saudara/i</p>
+          <a href="#" id="openInvitation"><i class="bi bi-envelope-open"></i>
+Buka Undangan</a>
+        </main>
+      </section>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+      <section id="home" class="home">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h1>Om Swastyastu</h1>
+              <p class="p1 col-lg-8 col-md-10 mx-auto">
+                Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/Tuhan
+                Yang Maha Esa kami bermaksud mengundang Bapak/Ibu/Saudara/i pada
+                Upacara Manusa Yadnya Metatah (Potong Gigi) Putra-Putra kami.
+              </p>
+                <img
+                src="img/ornamen-batas.png"
+                alt="Ornamen Batas"
+                class="ornamen-home"
+              />
+              <h2>I Kadek Meredana</h2>
+              <h2>I gede mariayasa</h2>
+              <p class="p2">Putra dari pasangan</p>
+              <h3>I Wayan Jumuarta dan Ni Nyoman Kariami</h3>
+              <img
+                src="img/ornamen-batas.png"
+                alt="Ornamen Batas"
+                class="ornamen-home"
+              />
+              <h2>I Wayan Merta</h2>
+              <h2>Ni made srianingsih</h2>
+              <p class="p2">Putra dan Putri dari pasangan</p>
+              <h3>I Nengah Neka dan Ni Wayan Selamet</h3>
+              <img
+                src="img/ornamen-batas.png"
+                alt="Ornamen Batas"
+                class="ornamen-home"
+              />
+              <!-- <h2>agus jaya saputra</h2>
+              <h2>I Made Narendra Dwi Putra</h2>
+              <p class="p2">Putra d dari pasangan</p>
+              <h3>I Ketut Murjana,S.E. dan Ni Nyoman Artiniasih</h3>
+              <img
+                src="img/ornamen-batas.png"
+                alt="Ornamen Batas"
+                class="ornamen-home"
+              /> -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="time" id="time">
+        <div class="container">
+          <div class="row">
+            <h1 class="head-time">Waktu dan Tempat</h1>
+            
+            <div class="countdown-container">
+              <div class="countdown-box">
+                <span class="number" id="days">0</span>
+                <span class="label">Hari</span>
+              </div>
+              <div class="countdown-box">
+                <span class="number" id="hours">0</span>
+                <span class="label">Jam</span>
+              </div>
+              <div class="countdown-box">
+                <span class="number" id="minutes">0</span>
+                <span class="label">Menit</span>
+              </div>
+              <div class="countdown-box">
+                <span class="number" id="seconds">0</span>
+                <span class="label">Detik</span>
+              </div>
+            </div>
+
+            <div class="col-time">
+              <h2>Rabu, 21 Desember 2025</h2>
+              <p>15.00 WITA - Selesai</p>
+              <p>
+                Jl. Gn. Agung, Desa Muncan, Kabupaten Karangasem, Bali 
+              </p>
+            </div>
+
+            <p class="p-info">
+              Merupakan suatu kebahagiaan dan kehormatan bagi kami apabila Bapak/
+              Ibu/ Saudara/i berkenan hadir untuk memberikan doa restu.
+            </p>
+            <p>Atas kehadiran dan doa restunya kami ucapkan terimakasih</p>
+            <h1 class="h1-2">Om Shanti Shanti Shanti Om</h1>
+            <p>Kami yang berbahagia</p>
+            <!-- <p>Keluarga I Ketut Murjana & Ni Nyoman Artiniasih</p> -->
+            <img
+              src="img/ornamen-batas.png"
+              alt="Ornamen Batas"
+              class="ornamen-time"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="rsvp" class="rsvp">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h1>Mohon Doa Restu</h1>
+              <h1>Ucapan Doa</h1>
+
+              <div class="form-container">
+                <form id="messageForm">
+                  <label for="name">Nama</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    placeholder="Masukkan nama Anda"
+                    required
+                  />
+
+                  <label for="attendance">Konfirmasi Kehadiran</label>
+                  <select id="attendance" name="attendance" required>
+                    <option value="">Pilih kehadiran</option>
+                    <option value="hadir">Hadir</option>
+                    <option value="tidak-hadir">Tidak Hadir</option>
+                  </select>
+
+                  <label for="message">Ucapan & Doa</label>
+                  <textarea 
+                    id="message" 
+                    name="message" 
+                    placeholder="Tuliskan ucapan dan doa Anda"
+                    required
+                  ></textarea>
+
+                  <button type="submit">Kirim Ucapan</button>
+                </form>
+                <div class="success-message" id="successMessage">
+                  ✓ Terima kasih! Ucapan Anda telah terkirim.
+                </div>
+              </div>
+
+              <!-- Messages Display -->
+              <div class="messages-container" id="messagesContainer">
+                <!-- Messages will be displayed here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <!-- <p>Create by Putu Raditya &copy; 2025</p> -->
+              <ul>
+                <li>
+                  <a href="#"><i class="bi bi-instagram"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-whatsapp"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-facebook"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-linkedin"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // Music Control
+      const bgMusic = document.getElementById('bgMusic');
+      const musicControl = document.getElementById('musicControl');
+      const musicIcon = document.getElementById('musicIcon');
+      let isPlaying = false;
+
+      musicControl.addEventListener('click', function() {
+        if (isPlaying) {
+          bgMusic.pause();
+          musicIcon.className = 'bi bi-music-note-beamed';
+          isPlaying = false;
+        } else {
+          bgMusic.play();
+          musicIcon.className = 'bi bi-pause-circle';
+          isPlaying = true;
+        }
+      });
+
+      // Open Invitation - Show main content
+      document.getElementById('openInvitation').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('coverPage').classList.add('hidden');
+        document.getElementById('mainContent').classList.add('active');
+        
+        // Auto play music when invitation is opened
+        bgMusic.play();
+        musicIcon.className = 'bi bi-pause-circle';
+        isPlaying = true;
+        
+        // Scroll to home section after transition
+        setTimeout(() => {
+          document.getElementById('home').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }, 800);
+      });
+
+      // Messages storage in memory
+      let messages = [];
+
+      // Load and display messages
+      function loadMessages() {
+        const messagesContainer = document.getElementById('messagesContainer');
+        messagesContainer.innerHTML = '';
+        
+        // Display messages (newest first)
+        messages.forEach(msg => {
+          const messageDiv = document.createElement('div');
+          messageDiv.className = 'message-item';
+          messageDiv.innerHTML = `
+            <div class="name">${msg.name}</div>
+            <span class="status ${msg.attendance}">${msg.attendance === 'hadir' ? 'Hadir' : 'Tidak Hadir'}</span>
+            <div class="message-text">${msg.message}</div>
+          `;
+          messagesContainer.appendChild(messageDiv);
+        });
+      }
+
+  // Countdown Timer
+const eventDate = new Date('January 21, 2026 15:00:00').getTime();
+
+function pad(num) {
+  return num.toString().padStart(2, '0');
+}
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+
+  if (distance < 0) {
+    document.getElementById('days').textContent = '00';
+    document.getElementById('hours').textContent = '00';
+    document.getElementById('minutes').textContent = '00';
+    document.getElementById('seconds').textContent = '00';
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById('days').textContent = pad(days);
+  document.getElementById('hours').textContent = pad(hours);
+  document.getElementById('minutes').textContent = pad(minutes);
+  document.getElementById('seconds').textContent = pad(seconds);
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+      // Form Submission Handler
+      document.getElementById('messageForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const attendance = document.getElementById('attendance').value;
+        const message = document.getElementById('message').value;
+
+        // Add message to beginning of array (newest first)
+        messages.unshift({
+          name: name,
+          attendance: attendance,
+          message: message,
+          timestamp: new Date()
+        });
+
+        // Show success message
+        const successMsg = document.getElementById('successMessage');
+        successMsg.style.display = 'block';
+
+        // Reset form
+        this.reset();
+
+        // Reload messages display
+        loadMessages();
+
+        // Hide success message after 3 seconds
+        setTimeout(() => {
+          successMsg.style.display = 'none';
+        }, 3000);
+
+        // Scroll to messages
+        setTimeout(() => {
+          document.getElementById('messagesContainer').scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest'
+          });
+        }, 500);
+      });
+
+      // Initialize
+      loadMessages();
+    </script>
+  </body>
+</html>
