@@ -41,7 +41,7 @@
         font-family: "Cormorant Garamond", "Ancizar Serif", serif;
         font-weight: 400;
         color: var(--blue);
-        background-color: var(--white);
+        background-color: #fffef9;
         overflow-x: hidden;
       }
 
@@ -100,6 +100,18 @@
         background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 60"><path d="M20,30 Q50,10 80,30 T140,30 T200,30 T260,30 T320,30 Q350,10 380,30" stroke="%2314213d" stroke-width="2" fill="none" opacity="0.5"/><path d="M200,5 L200,55 M200,30 L180,20 M200,30 L220,20 M200,30 L180,40 M200,30 L220,40" stroke="%23fca311" stroke-width="2" fill="none"/><circle cx="80" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/><circle cx="140" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/><circle cx="260" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/><circle cx="320" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/></svg>') no-repeat center;
         background-size: contain;
         opacity: 0.6;
+        animation: slideInDivider 1.2s ease;
+      }
+
+      @keyframes slideInDivider {
+        from {
+          opacity: 0;
+          transform: scaleX(0);
+        }
+        to {
+          opacity: 0.6;
+          transform: scaleX(1);
+        }
       }
 
       .section-ornament {
@@ -137,7 +149,7 @@
         position: absolute;
         inset: 0;
         z-index: -1;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 40%);
+        background: linear-gradient(to bottom, rgba(255, 254, 249, 1) 0%, rgba(255, 254, 249, 0) 40%);
       }
 
       body .time::before {
@@ -166,7 +178,7 @@
         position: absolute;
         inset: 0;
         z-index: -1;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 1) 100%);
+        background: linear-gradient(to bottom, rgba(255, 254, 249, 0) 60%, rgba(255, 254, 249, 1) 100%);
         pointer-events: none;
       }
 
@@ -216,7 +228,7 @@
         left: 0;
         width: 100%;
         height: 100vh;
-        background-color: var(--white);
+        background-color: #fffef9;
         z-index: 9999;
         display: flex;
         justify-content: center;
@@ -384,6 +396,7 @@
         padding-top: 5rem;
         padding-bottom: 2rem;
         font-style: italic;
+        animation: fadeInDown 1s ease;
       }
 
       /* Family Photo Section */
@@ -391,6 +404,49 @@
         margin: 3rem auto;
         padding: 2rem 0;
         max-width: 800px;
+        animation: fadeIn 1.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
       }
 
       .family-photo-container {
@@ -407,12 +463,11 @@
       }
 
       .family-photo-frame {
-  position: relative;
-  width: 100%;
-  padding-top: 100%; /* tetap lingkaran */
-  overflow: hidden;
-}
-
+        position: relative;
+        width: 100%;
+        padding-top: 100%;
+        overflow: hidden;
+      }
 
       .family-photo-frame::before {
         content: "";
@@ -426,24 +481,21 @@
         pointer-events: none;
       }
 
-    .family-photo-frame img {
-  position: absolute;
-  inset: 50%;
-  transform: translate(-50%, -50%) scale(1.08); /* ⬅ zoom halus */
-
-  width: 100%;
-  height: 100%;
-  object-fit: cover;         /* ⬅ isi penuh lingkaran */
-  object-position: center top; /* ⬅ prioritas wajah */
-
-  border-radius: 50%;
-  z-index: 1;
-}
-
-
+      .family-photo-frame img {
+        position: absolute;
+        inset: 50%;
+        transform: translate(-50%, -50%) scale(1.08);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        border-radius: 50%;
+        z-index: 1;
+      }
 
       .home p {
         padding-bottom: 0.6rem;
+        animation: fadeInUp 1.2s ease;
       }
 
       .home h2 {
@@ -455,6 +507,18 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
         font-weight: 700;
+        animation: fadeInScale 1s ease;
+      }
+
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
 
       .home p {
@@ -470,6 +534,7 @@
         font-style: italic;
         font-weight: 300;
         font-size: 26px;
+        animation: fadeInUp 1.4s ease;
       }
 
       .home .ornamen-home,
@@ -491,6 +556,7 @@
         margin: 3rem 0;
         flex-wrap: wrap;
         padding: 0 10px;
+        animation: fadeInUp 1s ease;
       }
 
       .countdown-box {
@@ -501,6 +567,24 @@
         min-width: 80px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         transition: all 0.3s ease;
+        animation: bounceIn 1s ease;
+      }
+
+      @keyframes bounceIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.3);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        70% {
+          transform: scale(0.9);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
 
       .countdown-box:hover {
@@ -543,6 +627,18 @@
         max-width: 600px;
         width: 90%;
         transition: all 0.3s ease;
+        animation: zoomIn 1s ease;
+      }
+
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
 
       .time .col-time:hover {
@@ -551,52 +647,62 @@
       }
 
       .time .col-time h2 {
-        font-size: 2.2rem;
+        font-size: 2.8rem;
         font-weight: 700;
         color: var(--blue);
-        margin-bottom: 0.8rem;
+        margin-bottom: 1rem;
         line-height: 1.3;
+        animation: fadeInUp 0.8s ease;
       }
 
       .time .col-time p {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
         line-height: 1.8;
         color: var(--blue);
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.8rem;
+        animation: fadeInUp 1s ease;
       }
 
       .time .row p {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
+        animation: fadeInUp 1.2s ease;
       }
 
       .time .row .p-info {
-        padding-top: 1.3rem;
+        padding-top: 1.5rem;
         padding-left: 2rem;
         padding-right: 2rem;
+        font-size: 1.7rem;
+        animation: fadeInUp 1.4s ease;
       }
 
       .time h1.head-time {
         padding-top: 5rem;
         padding-bottom: 2rem;
+        animation: fadeInDown 0.8s ease;
       }
 
       .time h2 {
         font-style: italic;
         padding-bottom: 0.6rem;
+        animation: fadeInUp 1s ease;
       }
 
       .time .row h1 {
         padding: 1rem;
+        animation: fadeInUp 1.6s ease;
       }
 
       /* RSVP Form */
       .rsvp {
         padding-bottom: 3rem;
+        animation: fadeIn 1s ease;
       }
 
       .rsvp h1 {
         padding-top: 2rem;
-        font-size: 2.5rem;
+        font-size: 3rem;
+        animation: fadeInDown 0.8s ease;
       }
 
       .form-container {
@@ -610,6 +716,18 @@
         border-radius: 20px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         transition: all 0.3s ease;
+        animation: slideInUp 1s ease;
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .form-container:hover {
@@ -619,11 +737,12 @@
       .form-container label {
         position: relative;
         z-index: 11;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         font-style: italic;
         margin-bottom: 0.5rem;
         display: block;
         text-align: left;
+        animation: fadeInLeft 0.6s ease;
       }
 
       .form-container input,
@@ -632,16 +751,17 @@
         position: relative;
         z-index: 11;
         width: 100%;
-        padding: 12px;
+        padding: 15px;
         margin-bottom: 1.5rem;
         border: 2px solid var(--gold);
         border-radius: 10px;
-        background-color: rgba(255, 255, 255, 0.95);
+        background-color: rgba(255, 254, 249, 0.98);
         font-family: "Cormorant Garamond", serif;
-        font-size: 1rem;
+        font-size: 1.2rem;
         color: var(--blue);
         cursor: pointer;
         transition: all 0.3s ease;
+        animation: fadeInRight 0.8s ease;
       }
 
       .form-container input:focus,
@@ -725,27 +845,27 @@
 
       /* Messages Display */
       .messages-container {
-        max-width: 600px;
-        margin: 2rem auto;
-        padding: 1rem;
+        max-width: 500px;
+        margin: 1.5rem auto;
+        padding: 0.8rem;
       }
 
       .loading-message {
         text-align: center;
-        padding: 2rem;
+        padding: 1.5rem;
         color: var(--blue);
         font-style: italic;
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
 
       .message-item {
         background: linear-gradient(135deg, rgba(20, 33, 61, 0.03), rgba(252, 163, 17, 0.03));
         border: 1px solid var(--gold);
-        border-radius: 15px;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 1rem;
         text-align: left;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
         transition: all 0.3s ease;
         animation: fadeInMessage 0.5s ease;
       }
@@ -763,22 +883,22 @@
 
       .message-item:hover {
         transform: translateX(5px);
-        box-shadow: 0 6px 15px rgba(212, 175, 55, 0.3);
+        box-shadow: 0 5px 12px rgba(212, 175, 55, 0.3);
       }
 
       .message-item .name {
         font-weight: 700;
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
         color: var(--orange);
       }
 
       .message-item .status {
         display: inline-block;
-        padding: 5px 15px;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        margin-bottom: 0.5rem;
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        margin-bottom: 0.4rem;
         font-weight: 600;
       }
 
@@ -793,23 +913,24 @@
       }
 
       .message-item .message-text {
-        font-size: 1rem;
-        line-height: 1.6;
+        font-size: 0.95rem;
+        line-height: 1.5;
         font-style: italic;
-        margin-top: 0.5rem;
+        margin-top: 0.4rem;
         color: var(--blue);
       }
 
       .message-item .timestamp {
-        font-size: 0.85rem;
-        color: #666;
-        margin-top: 0.5rem;
+        font-size: 0.75rem;
+        color: #888;
+        margin-top: 0.4rem;
         font-style: italic;
       }
 
       footer {
         padding-top: 1.3rem;
         padding-bottom: 1rem;
+        animation: fadeIn 2s ease;
       }
 
       footer p {
@@ -958,27 +1079,28 @@
         }
 
         .time .col-time h2 {
-          font-size: 1.5rem;
+          font-size: 1.8rem;
           line-height: 1.4;
         }
 
         .time .col-time p {
-          font-size: 1.1rem;
+          font-size: 1.8rem;
           line-height: 1.7;
         }
 
         .time .row p {
-          font-size: 1.2rem;
+          font-size: 1.5rem;
         }
 
         .time .row .p-info {
           padding-top: 1.5rem;
           padding-left: 1.5rem;
           padding-right: 1.5rem;
+          font-size: 1.4rem;
         }
 
         .rsvp h1 {
-          font-size: 2.2rem;
+          font-size: 2.5rem;
         }
 
         .form-container {
@@ -987,13 +1109,13 @@
         }
 
         .form-container label {
-          font-size: 1.15rem;
+          font-size: 1.3rem;
         }
 
         .form-container input,
         .form-container textarea,
         .form-container select {
-          font-size: 1rem;
+          font-size: 1.1rem;
           padding: 13px;
         }
 
@@ -1003,19 +1125,19 @@
         }
 
         .messages-container {
-          padding: 1rem 20px;
+          padding: 0.8rem 15px;
         }
 
         .message-item {
-          padding: 1.3rem;
+          padding: 0.9rem;
         }
 
         .message-item .name {
-          font-size: 1.2rem;
+          font-size: 1rem;
         }
 
         .message-item .message-text {
-          font-size: 1rem;
+          font-size: 0.9rem;
         }
 
         .music-control {
@@ -1146,26 +1268,27 @@
         }
 
         .time .col-time h2 {
-          font-size: 1.2rem;
+          font-size: 1.5rem;
           line-height: 1.5;
           word-wrap: break-word;
         }
 
         .time .col-time p {
-          font-size: 0.95rem;
+          font-size: 1.5rem;
           line-height: 1.6;
         }
 
         .time .row p {
-          font-size: 1.1rem;
+          font-size: 1.3rem;
         }
 
         .time .row .p-info {
           padding-top: 1.3rem;
+          font-size: 1.2rem;
         }
 
         .rsvp h1 {
-          font-size: 2rem;
+          font-size: 2.2rem;
         }
 
         .form-container {
@@ -1174,44 +1297,44 @@
         }
 
         .form-container label {
-          font-size: 1.05rem;
+          font-size: 1.2rem;
         }
 
         .form-container input,
         .form-container textarea,
         .form-container select {
-          font-size: 0.95rem;
+          font-size: 1rem;
           padding: 11px;
         }
 
         .form-container button {
-          font-size: 1.05rem;
+          font-size: 1.1rem;
           padding: 13px;
         }
 
         .messages-container {
-          padding: 1rem 15px;
+          padding: 0.8rem 12px;
         }
 
         .message-item {
-          padding: 1.2rem;
+          padding: 0.85rem;
         }
 
         .message-item .name {
-          font-size: 1.05rem;
-        }
-
-        .message-item .status {
-          font-size: 0.85rem;
-          padding: 5px 13px;
-        }
-
-        .message-item .message-text {
           font-size: 0.95rem;
         }
 
+        .message-item .status {
+          font-size: 0.75rem;
+          padding: 4px 10px;
+        }
+
+        .message-item .message-text {
+          font-size: 0.85rem;
+        }
+
         .message-item .timestamp {
-          font-size: 0.8rem;
+          font-size: 0.7rem;
         }
 
         footer p {
@@ -1355,7 +1478,7 @@
                 alt="Ornamen Batas"
                 class="ornamen-home"
               />
-                <h2>I Putu Arya Sumadana</h2>
+                <h2>I Putu Arya Kusumadana</h2>
                 <h2>Ni Kadek Noviani</h2>
                 <p class="p2">Putra dan Putri dari pasangan</p>
                 <h3>I Nyoman Sumarta dan Ni Kadek Riadi</h3>
@@ -1414,23 +1537,6 @@
               Merupakan suatu kebahagiaan dan kehormatan bagi kami apabila Bapak/
               Ibu/ Saudara/i berkenan hadir untuk memberikan doa restu.
             </p>
-             <h2 style="margin-top: 3rem; margin-bottom: 1.5rem;">Lokasi Acara</h2>
-            <div class="map-container">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.3841234567!2d115.5167!3d-8.5000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMzAnMDAuMCJTIDExNcKwMzEnMDAuMCJF!5e0!3m2!1sid!2sid!4v1234567890"
-                width="100%"
-                height="400"
-                style="border:0; border-radius: 15px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
-              <a 
-                href="https://maps.google.com/?q=Jl.+Gn.+Agung,+Desa+Muncan,+Kabupaten+Karangasem,+Bali" 
-                target="_blank"
-                class="map-button">
-              </a>
-            </div>
             <p>Atas kehadiran dan doa restunya kami ucapkan terimakasih</p>
             <h1 class="h1-2">Om Shanti Shanti Shanti Om</h1>
             <img
@@ -1502,18 +1608,24 @@
           <div class="row">
             <div class="col">
               <ul>
-                <li>
-                  <a href="#"><i class="bi bi-instagram"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="bi bi-whatsapp"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="bi bi-facebook"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="bi bi-linkedin"></i></a>
-                </li>
+               <li>
+  <a href="https://instagram.com/yanmerta_88" target="_blank" aria-label="Instagram">
+    <i class="bi bi-instagram"></i>
+  </a>
+</li>
+
+<li>
+  <a href="https://www.facebook.com/share/1XbheAvaf5/" target="_blank" aria-label="Facebook">
+    <i class="bi bi-facebook"></i>
+  </a>
+</li>
+
+<li>
+  <a href="https://www.linkedin.com/in/yan-merta-533914265?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn">
+    <i class="bi bi-linkedin"></i>
+  </a>
+</li>
+
               </ul>
             </div>
           </div>
