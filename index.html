@@ -68,6 +68,70 @@
         background-position: center;
       }
 
+      /* Ukiran Bali Decorations */
+      .ukiran-corner {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .ukiran-top-left {
+        top: 20px;
+        left: 20px;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M10,10 Q50,10 50,50 Q50,90 10,90 M10,50 Q30,50 30,70 M50,50 Q70,50 70,70 Q70,90 50,90 M90,10 Q90,50 50,50 M70,30 Q70,50 50,50" stroke="%2314213d" stroke-width="3" fill="none" opacity="0.4"/><circle cx="30" cy="30" r="5" fill="%23fca311"/><circle cx="70" cy="30" r="5" fill="%23fca311"/><circle cx="50" cy="70" r="5" fill="%23fca311"/></svg>') no-repeat center;
+        background-size: contain;
+      }
+
+      .ukiran-top-right {
+        top: 20px;
+        right: 20px;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M190,10 Q150,10 150,50 Q150,90 190,90 M190,50 Q170,50 170,70 M150,50 Q130,50 130,70 Q130,90 150,90 M110,10 Q110,50 150,50 M130,30 Q130,50 150,50" stroke="%2314213d" stroke-width="3" fill="none" opacity="0.4"/><circle cx="170" cy="30" r="5" fill="%23fca311"/><circle cx="130" cy="30" r="5" fill="%23fca311"/><circle cx="150" cy="70" r="5" fill="%23fca311"/></svg>') no-repeat center;
+        background-size: contain;
+      }
+
+      .ukiran-divider {
+        width: 80%;
+        max-width: 400px;
+        height: 60px;
+        margin: 2rem auto;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 60"><path d="M20,30 Q50,10 80,30 T140,30 T200,30 T260,30 T320,30 Q350,10 380,30" stroke="%2314213d" stroke-width="2" fill="none" opacity="0.5"/><path d="M200,5 L200,55 M200,30 L180,20 M200,30 L220,20 M200,30 L180,40 M200,30 L220,40" stroke="%23fca311" stroke-width="2" fill="none"/><circle cx="80" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/><circle cx="140" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/><circle cx="260" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/><circle cx="320" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/></svg>') no-repeat center;
+        background-size: contain;
+        opacity: 0.6;
+      }
+
+      .section-ornament {
+        position: relative;
+        padding: 3rem 0;
+      }
+
+      .section-ornament::before,
+      .section-ornament::after {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.25;
+      }
+
+      .section-ornament::before {
+        left: 10%;
+        top: 50%;
+        transform: translateY(-50%);
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,20 50,30 Q40,20 50,10 M50,30 Q60,40 50,50 Q40,40 50,30 M50,50 Q60,60 50,70 Q40,60 50,50 M50,70 Q60,80 50,90 Q40,80 50,70" stroke="%2314213d" stroke-width="2" fill="none"/><circle cx="50" cy="20" r="3" fill="%23fca311"/><circle cx="50" cy="40" r="3" fill="%23fca311"/><circle cx="50" cy="60" r="3" fill="%23fca311"/><circle cx="50" cy="80" r="3" fill="%23fca311"/></svg>');
+      }
+
+      .section-ornament::after {
+        right: 10%;
+        top: 50%;
+        transform: translateY(-50%) scaleX(-1);
+        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,20 50,30 Q40,20 50,10 M50,30 Q60,40 50,50 Q40,40 50,30 M50,50 Q60,60 50,70 Q40,60 50,50 M50,70 Q60,80 50,90 Q40,80 50,70" stroke="%2314213d" stroke-width="2" fill="none"/><circle cx="50" cy="20" r="3" fill="%23fca311"/><circle cx="50" cy="40" r="3" fill="%23fca311"/><circle cx="50" cy="60" r="3" fill="%23fca311"/><circle cx="50" cy="80" r="3" fill="%23fca311"/></svg>');
+      }
+
       body .home::after {
         content: "";
         position: absolute;
@@ -227,7 +291,7 @@
       .hero h2 {
         font-family: "Ballet";
         margin: 1.5rem 0;
-        font-size: 70px;
+        font-size: 90px;
         color: var(--blue);
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         animation: fadeInUp 1s ease 0.5s backwards;
@@ -307,11 +371,71 @@
         padding: 2rem 1rem;
       }
 
+      .home {
+        position: relative;
+      }
+
+      .home .ukiran-corner {
+        opacity: 0.2;
+      }
+
       .home h1 {
         font-size: 60px;
         padding-top: 5rem;
-        padding-bottom: 3rem;
+        padding-bottom: 2rem;
         font-style: italic;
+      }
+
+      /* Family Photo Section */
+      .family-photo-section {
+        margin: 3rem auto;
+        padding: 2rem 0;
+        max-width: 800px;
+      }
+
+      .family-photo-container {
+        position: relative;
+        width: 90%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0;
+        transition: all 0.4s ease;
+      }
+
+      .family-photo-container:hover {
+        transform: translateY(-8px) scale(1.02);
+      }
+
+      .family-photo-frame {
+        position: relative;
+        width: 100%;
+        padding-top: 100%; /* 1:1 Aspect Ratio */
+        overflow: hidden;
+      }
+
+      .family-photo-frame::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url('https://swalapatra.com/wp-content/uploads/2022/04/Frame-Boho-Brown-Newest.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .family-photo-frame img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+        height: 70%;
+        object-fit: cover;
+        border-radius: 50%;
+        z-index: 1;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       }
 
       .home p {
@@ -727,7 +851,7 @@
         }
 
         .hero h2 {
-          font-size: 50px;
+          font-size: 65px;
         }
 
         .hero h1 {
@@ -761,10 +885,31 @@
           left: -3.5rem;
         }
 
+        .ukiran-corner {
+          width: 100px;
+          height: 100px;
+        }
+
+        .section-ornament::before,
+        .section-ornament::after {
+          width: 70px;
+          height: 70px;
+        }
+
         .home h1 {
           font-size: 45px;
           padding-top: 3rem;
           padding-bottom: 2rem;
+        }
+
+        .family-photo-container {
+          width: 95%;
+          max-width: 500px;
+        }
+
+        .family-photo-frame img {
+          width: 68%;
+          height: 68%;
         }
 
         .home h2 {
@@ -887,7 +1032,7 @@
         }
 
         .hero h2 {
-          font-size: 40px;
+          font-size: 55px;
           margin: 1.2rem 0;
         }
 
@@ -922,10 +1067,36 @@
           left: -2.5rem;
         }
 
+        .ukiran-corner {
+          width: 80px;
+          height: 80px;
+        }
+
+        .section-ornament::before,
+        .section-ornament::after {
+          width: 60px;
+          height: 60px;
+        }
+
         .home h1 {
           font-size: 38px;
           padding-top: 2.5rem;
           padding-bottom: 1.8rem;
+        }
+
+        .family-photo-section {
+          margin: 2rem auto;
+          padding: 1.5rem 0;
+        }
+
+        .family-photo-container {
+          width: 95%;
+          max-width: 450px;
+        }
+
+        .family-photo-frame img {
+          width: 66%;
+          height: 66%;
         }
 
         .home h2 {
@@ -1054,11 +1225,22 @@
 
       @media (max-width: 360px) {
         .hero h2 {
-          font-size: 36px;
+          font-size: 50px;
         }
 
         .hero h1 {
           font-size: 28px;
+        }
+
+        .ukiran-corner {
+          width: 60px;
+          height: 60px;
+        }
+
+        .section-ornament::before,
+        .section-ornament::after {
+          width: 50px;
+          height: 50px;
         }
 
         .home h1 {
@@ -1124,60 +1306,82 @@
     <!-- Main Content -->
     <div class="main-content" id="mainContent">
       <section id="home" class="home">
+        <div class="ukiran-corner ukiran-top-left"></div>
+        <div class="ukiran-corner ukiran-top-right"></div>
         <div class="container">
           <div class="row">
             <div class="col-12">
               <h1>Om Swastyastu</h1>
+              <div class="ukiran-divider"></div>
+              
+              <!-- Family Photo -->
+              <div class="family-photo-section">
+                <div class="family-photo-container">
+                  <div class="family-photo-frame">
+                    <img src="img/test.png" alt="Foto Keluarga" />
+                  </div>
+                </div>
+              </div>
+              
               <p class="p1 col-lg-8 col-md-10 mx-auto">
-                Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/Tuhan
-                Yang Maha Esa kami bermaksud mengundang Bapak/Ibu/Saudara/i pada
-                Upacara Manusa Yadnya Metatah (Potong Gigi) Putra-Putra kami.
+               Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/Tuhan Yang Maha Esa, perkenankan kami mengundang Bapak/Ibu/Saudara/i pada Upacara Manusa Yadnya Mepandes (Metatah) putra-putri kami.
               </p>
               <img
                 src="img/ornamen-batas.png"
                 alt="Ornamen Batas"
                 class="ornamen-home"
               />
-              <h2>I Gede Mariyasa</h2>
-              <h2>I Kadek Maredana</h2>
-              <p class="p2">Putra dari pasangan</p>
-              <h3>I Wayan Jumuarta dan Ni Nyoman Kariami</h3>
+              <div class="section-ornament">
+                <h2>I Gede Mariyasa</h2>
+                <h2>I Kadek Maredana</h2>
+                <p class="p2">Putra dari pasangan</p>
+                <h3>I Wayan Jumuarta dan Ni Nyoman Kariami</h3>
+              </div>
               <img
                 src="img/ornamen-batas.png"
                 alt="Ornamen Batas"
                 class="ornamen-home"
               />
-              <h2>I Wayan Merta</h2>
-              <h2>Ni Made Srianingsih</h2>
-              <p class="p2">Putra dan Putri dari pasangan</p>
-              <h3>I Nengah Neka dan Ni Wayan Selamet</h3>
+              <div class="section-ornament">
+                <h2>I Wayan Merta</h2>
+                <h2>Ni Made Srianingsih</h2>
+                <p class="p2">Putra dan Putri dari pasangan</p>
+                <h3>I Nengah Neka dan Ni Wayan Selamet</h3>
+              </div>
               <img
                 src="img/ornamen-batas.png"
                 alt="Ornamen Batas"
                 class="ornamen-home"
               />
-              <h2>I Putu Arya Sumadana</h2>
-              <h2>Ni Kadek Noviani</h2>
-              <p class="p2">Putra dan Putri dari pasangan</p>
-              <h3>I Nyoman Sumarta dan Ni Kadek Riadi</h3>
+              <div class="section-ornament">
+                <h2>I Putu Arya Sumadana</h2>
+                <h2>Ni Kadek Noviani</h2>
+                <p class="p2">Putra dan Putri dari pasangan</p>
+                <h3>I Nyoman Sumarta dan Ni Kadek Riadi</h3>
+              </div>
                <img
                 src="img/ornamen-batas.png"
                 alt="Ornamen Batas"
                 class="ornamen-home"
               />
-              <h2>Ni luh Putu Juniasih</h2>
-              <h2>I Kadek Agus Widiarta</h2>
-              <p class="p2">Putra dan Putri dari pasangan</p>
-              <h3>I Wayan Cenik Suryantara dan Ni Made Sukeni </h3>
+              <div class="section-ornament">
+                <h2>Ni luh Putu Juniasih</h2>
+                <h2>I Kadek Agus Widiarta</h2>
+                <p class="p2">Putra dan Putri dari pasangan</p>
+                <h3>I Wayan Cenik Suryantara dan Ni Made Sukeni </h3>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <section class="time" id="time">
+        <div class="ukiran-corner ukiran-top-left"></div>
+        <div class="ukiran-corner ukiran-top-right"></div>
         <div class="container">
           <div class="row">
             <h1 class="head-time">Waktu dan Tempat</h1>
+            <div class="ukiran-divider"></div>
             
             <div class="countdown-container">
               <div class="countdown-box">
@@ -1199,8 +1403,8 @@
             </div>
 
             <div class="col-time">
-              <h2>Rabu, 21 Januari 2025</h2>
-              <p>15.00 WITA - Selesai</p>
+              <h2>Rabu, 21 Januari 2026</h2>
+              <p>11.00 WITA - Selesai</p>
               <p>
                 Jl. Gn. Agung, Desa Muncan, Kabupaten Karangasem, Bali 
               </p>
@@ -1210,9 +1414,25 @@
               Merupakan suatu kebahagiaan dan kehormatan bagi kami apabila Bapak/
               Ibu/ Saudara/i berkenan hadir untuk memberikan doa restu.
             </p>
+             <h2 style="margin-top: 3rem; margin-bottom: 1.5rem;">Lokasi Acara</h2>
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.3841234567!2d115.5167!3d-8.5000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMzAnMDAuMCJTIDExNcKwMzEnMDAuMCJF!5e0!3m2!1sid!2sid!4v1234567890"
+                width="100%"
+                height="400"
+                style="border:0; border-radius: 15px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+              <a 
+                href="https://maps.google.com/?q=Jl.+Gn.+Agung,+Desa+Muncan,+Kabupaten+Karangasem,+Bali" 
+                target="_blank"
+                class="map-button">
+              </a>
+            </div>
             <p>Atas kehadiran dan doa restunya kami ucapkan terimakasih</p>
             <h1 class="h1-2">Om Shanti Shanti Shanti Om</h1>
-            <p>Kami yang berbahagia</p>
             <img
               src="img/ornamen-batas.png"
               alt="Ornamen Batas"
@@ -1223,11 +1443,14 @@
       </section>
 
       <section id="rsvp" class="rsvp">
+        <div class="ukiran-corner ukiran-top-left"></div>
+        <div class="ukiran-corner ukiran-top-right"></div>
         <div class="container">
           <div class="row">
             <div class="col-12">
               <h1>Mohon Doa Restu</h1>
               <h1>Ucapan Doa</h1>
+              <div class="ukiran-divider"></div>
 
               <div class="form-container">
                 <form id="messageForm">
@@ -1346,39 +1569,37 @@
       });
 
       // ===== Countdown Timer =====
-     // Countdown Timer
-const eventDate = new Date('January 21, 2026 15:00:00').getTime();
+      const eventDate = new Date('January 21, 2026 11:00:00').getTime();
 
-function pad(num) {
-  return num.toString().padStart(2, '0');
-}
+      function pad(num) {
+        return num.toString().padStart(2, '0');
+      }
 
-function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = eventDate - now;
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = eventDate - now;
 
-  if (distance < 0) {
-    document.getElementById('days').textContent = '00';
-    document.getElementById('hours').textContent = '00';
-    document.getElementById('minutes').textContent = '00';
-    document.getElementById('seconds').textContent = '00';
-    return;
-  }
+        if (distance < 0) {
+          document.getElementById('days').textContent = '00';
+          document.getElementById('hours').textContent = '00';
+          document.getElementById('minutes').textContent = '00';
+          document.getElementById('seconds').textContent = '00';
+          return;
+        }
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  document.getElementById('days').textContent = pad(days);
-  document.getElementById('hours').textContent = pad(hours);
-  document.getElementById('minutes').textContent = pad(minutes);
-  document.getElementById('seconds').textContent = pad(seconds);
-}
+        document.getElementById('days').textContent = pad(days);
+        document.getElementById('hours').textContent = pad(hours);
+        document.getElementById('minutes').textContent = pad(minutes);
+        document.getElementById('seconds').textContent = pad(seconds);
+      }
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
 
       // ===== Load Messages from Google Sheets =====
       async function loadMessages() {
