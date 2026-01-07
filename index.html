@@ -491,6 +491,22 @@
       width: 100%;
       padding-top: 100%;
       overflow: hidden;
+      animation: breathing 6s ease-in-out infinite;
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+      transition: all 1s ease;
+    }
+
+    @keyframes breathing {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.03);
+      }
     }
 
     .family-photo-frame::before {
@@ -515,6 +531,28 @@
       object-position: center top;
       border-radius: 50%;
       z-index: 1;
+    }
+
+    .animate-family {
+      animation: fadeZoom 1.6s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeZoom {
+      0% {
+        opacity: 0;
+        transform: scale(0.92);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .family-photo-frame.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
 
     .home p {
@@ -1614,11 +1652,12 @@
             <!-- Family Photo -->
             <div class="family-photo-section">
               <div class="family-photo-container">
-                <div class="family-photo-frame">
+                <div class="family-photo-frame animate-family">
                   <img src="img/family.png" alt="Foto Keluarga" />
                 </div>
               </div>
             </div>
+
             <img src="img/ornamen-batas.png" alt="Ornamen Batas" class="ornamen-home" />
             <h2>I Gede Mariyasa</h2>
             <h2>I Kadek Meredana</h2>
@@ -1978,6 +2017,20 @@
     // ===== Initialize =====
     loadMessages();
   </script>
+  <script>
+    const photo = document.querySelector('.family-photo-frame');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          photo.classList.add('show');
+        }
+      });
+    });
+
+    observer.observe(photo);
+  </script>
+
 </body>
 
 </html>
