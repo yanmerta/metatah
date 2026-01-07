@@ -1,1851 +1,1983 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Undangan Mepandes</title>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Undangan Mepandes</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Ballet:opsz@16..72&family=Bilbo+Swash+Caps&family=Cormorant+Garamond:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-    <style>
-      :root {
-        --blue: #14213d;
-        --orange: #fca311;
-        --gold: #d4af37;
-        --platinum: #e5e5e5;
-        --shadow: #050505;
-        --white: #ffffff;
-        --cream: #faf8f3;
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Ballet:opsz@16..72&family=Bilbo+Swash+Caps&family=Cormorant+Garamond:wght@300;400;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --blue: #14213d;
+      --orange: #fca311;
+      --gold: #d4af37;
+      --platinum: #e5e5e5;
+      --shadow: #050505;
+      --white: #ffffff;
+      --cream: #faf8f3;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Cormorant Garamond", "Ancizar Serif", serif;
+      font-weight: 400;
+      color: var(--blue);
+      background-color: #fffef9;
+      overflow-x: hidden;
+    }
+
+    body .home,
+    body .time,
+    body .rsvp {
+      position: relative;
+      z-index: 1;
+      overflow: visible;
+    }
+
+    .main-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    body .home::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image: url(img/background-ornament-2.png);
+      background-repeat: repeat;
+      background-position: center;
+    }
+
+    /* Ukiran Bali Decorations */
+    .ukiran-corner {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .ukiran-top-left {
+      top: 20px;
+      left: 20px;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M10,10 Q50,10 50,50 Q50,90 10,90 M10,50 Q30,50 30,70 M50,50 Q70,50 70,70 Q70,90 50,90 M90,10 Q90,50 50,50 M70,30 Q70,50 50,50" stroke="%2314213d" stroke-width="3" fill="none" opacity="0.4"/><circle cx="30" cy="30" r="5" fill="%23fca311"/><circle cx="70" cy="30" r="5" fill="%23fca311"/><circle cx="50" cy="70" r="5" fill="%23fca311"/></svg>') no-repeat center;
+      background-size: contain;
+    }
+
+    .ukiran-top-right {
+      top: 20px;
+      right: 20px;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M190,10 Q150,10 150,50 Q150,90 190,90 M190,50 Q170,50 170,70 M150,50 Q130,50 130,70 Q130,90 150,90 M110,10 Q110,50 150,50 M130,30 Q130,50 150,50" stroke="%2314213d" stroke-width="3" fill="none" opacity="0.4"/><circle cx="170" cy="30" r="5" fill="%23fca311"/><circle cx="130" cy="30" r="5" fill="%23fca311"/><circle cx="150" cy="70" r="5" fill="%23fca311"/></svg>') no-repeat center;
+      background-size: contain;
+    }
+
+    .ukiran-divider {
+      width: 80%;
+      max-width: 400px;
+
+      height: 32px;
+      /* ⬅ lebih pendek lagi */
+      margin: 0.2rem auto 0.9rem;
+      /* ⬅ sangat dekat ke judul */
+
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 60"><path d="M20,30 Q50,10 80,30 T140,30 T200,30 T260,30 T320,30 Q350,10 380,30" stroke="%2314213d" stroke-width="2" fill="none" opacity="0.5"/><path d="M200,5 L200,55 M200,30 L180,20 M200,30 L220,20 M200,30 L180,40 M200,30 L220,40" stroke="%23fca311" stroke-width="2" fill="none"/><circle cx="80" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/><circle cx="140" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/><circle cx="260" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/><circle cx="320" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/></svg>') no-repeat center;
+
+      background-size: contain;
+      opacity: 0.6;
+    }
+
+    .divider-small {
+      height: 26px;
+      margin: 20px auto 18px;
+      opacity: 0.45;
+    }
+
+    .rsvp {
+      padding-top: 40px;
+      /* sebelumnya biasanya 80–100px */
+      padding-bottom: 60px;
+    }
+
+
+
+    @keyframes slideInDivider {
+      from {
+        opacity: 0;
+        transform: scaleX(0);
       }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Cormorant Garamond", "Ancizar Serif", serif;
-        font-weight: 400;
-        color: var(--blue);
-        background-color: #fffef9;
-        overflow-x: hidden;
-      }
-
-      body .home,
-      body .time,
-      body .rsvp {
-        position: relative;
-        z-index: 1;
-        overflow: visible;
-      }
-      
-      .main-content {
-        position: relative;
-        z-index: 1;
-      }
-
-      body .home::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        background-image: url(img/background-ornament-2.png);
-        background-repeat: repeat;
-        background-position: center;
-      }
-
-      /* Ukiran Bali Decorations */
-      .ukiran-corner {
-        position: absolute;
-        width: 150px;
-        height: 150px;
-        opacity: 0.3;
-        pointer-events: none;
-        z-index: 1;
-      }
-
-      .ukiran-top-left {
-        top: 20px;
-        left: 20px;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M10,10 Q50,10 50,50 Q50,90 10,90 M10,50 Q30,50 30,70 M50,50 Q70,50 70,70 Q70,90 50,90 M90,10 Q90,50 50,50 M70,30 Q70,50 50,50" stroke="%2314213d" stroke-width="3" fill="none" opacity="0.4"/><circle cx="30" cy="30" r="5" fill="%23fca311"/><circle cx="70" cy="30" r="5" fill="%23fca311"/><circle cx="50" cy="70" r="5" fill="%23fca311"/></svg>') no-repeat center;
-        background-size: contain;
-      }
-
-      .ukiran-top-right {
-        top: 20px;
-        right: 20px;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M190,10 Q150,10 150,50 Q150,90 190,90 M190,50 Q170,50 170,70 M150,50 Q130,50 130,70 Q130,90 150,90 M110,10 Q110,50 150,50 M130,30 Q130,50 150,50" stroke="%2314213d" stroke-width="3" fill="none" opacity="0.4"/><circle cx="170" cy="30" r="5" fill="%23fca311"/><circle cx="130" cy="30" r="5" fill="%23fca311"/><circle cx="150" cy="70" r="5" fill="%23fca311"/></svg>') no-repeat center;
-        background-size: contain;
-      }
-
-      .ukiran-divider {
-        width: 80%;
-        max-width: 400px;
-        height: 60px;
-        margin: 2rem auto;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 60"><path d="M20,30 Q50,10 80,30 T140,30 T200,30 T260,30 T320,30 Q350,10 380,30" stroke="%2314213d" stroke-width="2" fill="none" opacity="0.5"/><path d="M200,5 L200,55 M200,30 L180,20 M200,30 L220,20 M200,30 L180,40 M200,30 L220,40" stroke="%23fca311" stroke-width="2" fill="none"/><circle cx="80" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/><circle cx="140" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/><circle cx="260" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/><circle cx="320" cy="30" r="8" fill="none" stroke="%23d4af37" stroke-width="2"/></svg>') no-repeat center;
-        background-size: contain;
+      to {
         opacity: 0.6;
-        animation: slideInDivider 1.2s ease;
+        transform: scaleX(1);
+      }
+    }
+
+    .section-ornament {
+      position: relative;
+      padding: 3rem 0;
+    }
+
+    .section-ornament::before,
+    .section-ornament::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.25;
+    }
+
+    .section-ornament::before {
+      left: 10%;
+      top: 50%;
+      transform: translateY(-50%);
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,20 50,30 Q40,20 50,10 M50,30 Q60,40 50,50 Q40,40 50,30 M50,50 Q60,60 50,70 Q40,60 50,50 M50,70 Q60,80 50,90 Q40,80 50,70" stroke="%2314213d" stroke-width="2" fill="none"/><circle cx="50" cy="20" r="3" fill="%23fca311"/><circle cx="50" cy="40" r="3" fill="%23fca311"/><circle cx="50" cy="60" r="3" fill="%23fca311"/><circle cx="50" cy="80" r="3" fill="%23fca311"/></svg>');
+    }
+
+    .section-ornament::after {
+      right: 10%;
+      top: 50%;
+      transform: translateY(-50%) scaleX(-1);
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,20 50,30 Q40,20 50,10 M50,30 Q60,40 50,50 Q40,40 50,30 M50,50 Q60,60 50,70 Q40,60 50,50 M50,70 Q60,80 50,90 Q40,80 50,70" stroke="%2314213d" stroke-width="2" fill="none"/><circle cx="50" cy="20" r="3" fill="%23fca311"/><circle cx="50" cy="40" r="3" fill="%23fca311"/><circle cx="50" cy="60" r="3" fill="%23fca311"/><circle cx="50" cy="80" r="3" fill="%23fca311"/></svg>');
+    }
+
+    body .home::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(to bottom, rgba(255, 254, 249, 1) 0%, rgba(255, 254, 249, 0) 40%);
+    }
+
+    body .time::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image: url(img/background-ornament-2.png);
+      background-repeat: repeat;
+      background-position: center;
+      opacity: 1;
+    }
+
+    body .rsvp::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image: url(img/background-ornament-2.png);
+      background-repeat: repeat;
+      background-position: center;
+    }
+
+    body .rsvp::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(to bottom, rgba(255, 254, 249, 0) 60%, rgba(255, 254, 249, 1) 100%);
+      pointer-events: none;
+    }
+
+    /* Music Control Button */
+    .music-control {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9998;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--orange));
+      border: 3px solid var(--gold);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      animation: pulse 2s infinite;
+    }
+
+    .music-control:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .music-control i {
+      font-size: 1.5rem;
+      color: var(--white);
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       }
 
-      @keyframes slideInDivider {
-        from {
-          opacity: 0;
-          transform: scaleX(0);
-        }
-        to {
-          opacity: 0.6;
-          transform: scaleX(1);
-        }
+      50% {
+        box-shadow: 0 8px 30px rgba(228, 226, 222, 0.6);
+      }
+    }
+
+    /* Cover Page */
+    .cover-page {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: #fffef9;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .cover-page.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-image: url(img/mandala-op15.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 600px;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero .ornamen {
+      position: absolute;
+      z-index: 2;
+      width: 700px;
+      opacity: 0.3;
+      animation: fadeInScale 1.5s ease forwards;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
       }
 
-      .section-ornament {
-        position: relative;
-        padding: 3rem 0;
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .hero .ornamen-kanan {
+      bottom: -4rem;
+      right: -5rem;
+      transform: rotate(30deg);
+    }
+
+    .hero .ornamen-kiri {
+      top: -4rem;
+      left: -10rem;
+      transform: rotate(30deg);
+    }
+
+    .hero h2 {
+      font-family: "Ballet";
+      margin: 1.5rem 0;
+      font-size: 90px;
+      color: var(--blue);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 1s ease 0.5s backwards;
+      line-height: 1.2;
+    }
+
+    .hero h1 {
+      font-size: 60px;
+      color: var(--blue);
+      animation: fadeInUp 1s ease 0.7s backwards;
+      margin: 0.5rem 0;
+    }
+
+    .hero h3 {
+      margin: 1.5rem 0 0.5rem 0;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--blue);
+      animation: fadeInUp 1s ease 0.9s backwards;
+    }
+
+    .hero p {
+      font-size: 24px;
+      color: var(--blue);
+      animation: fadeInUp 1s ease 1.1s backwards;
+      margin: 0.5rem 0;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero a {
+      font-size: 24px;
+      color: var(--white);
+      background-color: var(--blue);
+      box-shadow: 0 4px 10px var(--shadow);
+      border-radius: 20px;
+      padding: 10px 30px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      margin-top: 2rem;
+      animation: fadeInUp 1s ease 1.3s backwards;
+    }
+
+    .hero a:hover {
+      color: var(--blue);
+      background-color: var(--white);
+      border: 1px solid var(--blue);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px var(--shadow);
+    }
+
+    /* Main Content - Hidden by default */
+    .main-content {
+      display: none;
+    }
+
+    .main-content.active {
+      display: block;
+    }
+
+    .home,
+    .time,
+    .rsvp {
+      text-align: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .home {
+      position: relative;
+    }
+
+    .home .ukiran-corner {
+      opacity: 0.2;
+    }
+
+    .home h1 {
+      font-size: 60px;
+      padding-top: 5rem;
+      padding-bottom: 2rem;
+      font-style: italic;
+      animation: fadeInDown 1s ease;
+    }
+
+    /* Family Photo Section */
+    .family-photo-section {
+      margin: 3rem auto;
+      padding: 2rem 0;
+      max-width: 800px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .family-photo-container {
+      position: relative;
+      width: 90%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0;
+      transition: all 0.4s ease;
+    }
+
+    .family-photo-container:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .family-photo-frame {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      overflow: hidden;
+    }
+
+    .family-photo-frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('https://swalapatra.com/wp-content/uploads/2022/04/Frame-Boho-Brown-Newest.png');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .family-photo-frame img {
+      position: absolute;
+      inset: 50%;
+      transform: translate(-50%, -50%) scale(1.08);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .home p {
+      padding-bottom: 0.6rem;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .home h2 {
+      font-style: italic;
+      font-size: 40px;
+      padding: 0.5rem;
+      background: linear-gradient(135deg, var(--blue), var(--orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+      animation: fadeInScale 1s ease;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .home p {
+      font-size: 20px;
+      font-style: italic;
+    }
+
+    .home .p2 {
+      padding-top: 0.7rem;
+    }
+
+    .home h3 {
+      font-style: italic;
+      font-weight: 300;
+      font-size: 26px;
+      animation: fadeInUp 1.4s ease;
+    }
+
+    .home .ornamen-home,
+    .time .ornamen-time {
+      padding-top: 3rem;
+      padding-bottom: 1rem;
+      width: 100%;
+      max-width: 500px;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Countdown Timer */
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 3rem 0;
+      flex-wrap: wrap;
+      padding: 0 10px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .countdown-box {
+      background: linear-gradient(135deg, rgba(20, 33, 61, 0.05), rgba(252, 163, 17, 0.05));
+      border: 2px solid var(--gold);
+      border-radius: 15px;
+      padding: 15px;
+      min-width: 80px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      animation: bounceIn 1s ease;
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      70% {
+        transform: scale(0.9);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .countdown-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(252, 163, 17, 0.3);
+    }
+
+    .countdown-box .number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      display: block;
+      background: linear-gradient(135deg, var(--blue), var(--orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .countdown-box .label {
+      font-size: 0.9rem;
+      font-style: italic;
+      margin-top: 5px;
+      color: var(--blue);
+    }
+
+    .time {
+      font-style: italic;
+    }
+
+    .time .col-time {
+      border: 3px solid var(--gold);
+      border-radius: 30px;
+      border-style: double;
+      justify-content: center;
+      align-items: center;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(20, 33, 61, 0.03), rgba(252, 163, 17, 0.03));
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 90%;
+      transition: all 0.3s ease;
+      animation: zoomIn 1s ease;
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .time .col-time:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.3);
+    }
+
+    .time .col-time h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .time .col-time h2 i {
+      color: var(--orange);
+      margin-right: 0.5rem;
+      font-size: 2.5rem;
+      vertical-align: middle;
+    }
+
+    .time .col-time p {
+      font-size: 1.8rem;
+      line-height: 1.8;
+      color: var(--blue);
+      margin-bottom: 0.8rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    .time .col-time p i {
+      color: var(--gold);
+      margin-right: 0.5rem;
+      font-size: 1.6rem;
+      vertical-align: middle;
+    }
+
+    .time .row p {
+      font-size: 1.8rem;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .time .row .p-info {
+      padding-top: 1.5rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      font-size: 1.7rem;
+      animation: fadeInUp 1.4s ease;
+    }
+
+    .time h1.head-time {
+      padding-top: 5rem;
+      padding-bottom: 2rem;
+      animation: fadeInDown 0.8s ease;
+    }
+
+    .time h2 {
+      font-style: italic;
+      padding-bottom: 0.6rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    .time .row h1 {
+      padding: 1rem;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    /* RSVP Form */
+    .rsvp {
+      padding-bottom: 3rem;
+      animation: fadeIn 1s ease;
+    }
+
+    .rsvp h1 {
+      padding-top: 2rem;
+      font-size: 3rem;
+      animation: fadeInDown 0.8s ease;
+    }
+
+    .form-container {
+      position: relative;
+      z-index: 10;
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(20, 33, 61, 0.03), rgba(252, 163, 17, 0.03));
+      border: 2px solid var(--gold);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      animation: slideInUp 1s ease;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-container:hover {
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+    }
+
+    .form-container label {
+      position: relative;
+      z-index: 11;
+      font-size: 1.4rem;
+      font-style: italic;
+      margin-bottom: 0.5rem;
+      display: block;
+      text-align: left;
+      animation: fadeInLeft 0.6s ease;
+    }
+
+    .form-container input,
+    .form-container textarea,
+    .form-container select {
+      position: relative;
+      z-index: 11;
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 1.5rem;
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      background-color: rgba(255, 254, 249, 0.98);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.2rem;
+      color: var(--blue);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: fadeInRight 0.8s ease;
+    }
+
+    .form-container input:focus,
+    .form-container textarea:focus,
+    .form-container select:focus {
+      outline: none;
+      border-color: var(--orange);
+      box-shadow: 0 0 10px rgba(252, 163, 17, 0.3);
+    }
+
+    .form-container textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-container button {
+      position: relative;
+      z-index: 11;
+      width: 100%;
+      padding: 15px;
+      font-size: 1.3rem;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--blue), #1a2a4d);
+      border: 2px solid var(--gold);
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-container button:hover:not(:disabled) {
+      background: linear-gradient(135deg, var(--orange), #e09400);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(252, 163, 17, 0.4);
+    }
+
+    .form-container button:disabled {
+      background: #999;
+      cursor: not-allowed;
+      transform: none;
+      opacity: 0.7;
+    }
+
+    .success-message {
+      display: none;
+      background-color: rgba(76, 175, 80, 0.9);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 1.1rem;
+      animation: slideIn 0.3s ease;
+    }
+
+    .error-message {
+      display: none;
+      background-color: rgba(244, 67, 54, 0.9);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 1.1rem;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Messages Display */
+    .messages-container {
+      max-width: 500px;
+      margin: 1.5rem auto;
+      padding: 0.8rem;
+    }
+
+    .loading-message {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--blue);
+      font-style: italic;
+      font-size: 1rem;
+    }
+
+    .message-item {
+      background: linear-gradient(135deg, rgba(20, 33, 61, 0.03), rgba(252, 163, 17, 0.03));
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      text-align: left;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      animation: fadeInMessage 0.5s ease;
+    }
+
+    @keyframes fadeInMessage {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .message-item:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 12px rgba(212, 175, 55, 0.3);
+    }
+
+    .message-item .name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+      color: var(--orange);
+    }
+
+    .message-item .status {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    .message-item .status.hadir {
+      background-color: rgba(76, 175, 80, 0.8);
+      color: white;
+    }
+
+    .message-item .status.tidak-hadir {
+      background-color: rgba(244, 67, 54, 0.8);
+      color: white;
+    }
+
+    .message-item .message-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      font-style: italic;
+      margin-top: 0.4rem;
+      color: var(--blue);
+    }
+
+    .message-item .timestamp {
+      font-size: 0.75rem;
+      color: #888;
+      margin-top: 0.4rem;
+      font-style: italic;
+    }
+
+    .event-section {
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 20px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* SECTION */
+    .event-section {
+      padding: 40px 15px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* CARD */
+    .event-card {
+      background: #ffffff;
+      max-width: 600px;
+      width: 100%;
+      padding: 25px 22px;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      text-align: center;
+    }
+
+    /* WAKTU */
+    .col-time h2 {
+      font-size: clamp(1.2rem, 2.8vw, 1.6rem);
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 0.5rem;
+      color: var(--blue);
+    }
+
+    .col-time h2 i {
+      margin-right: 6px;
+      font-size: 1em;
+    }
+
+    .col-time p {
+      font-size: clamp(0.9rem, 2.4vw, 1.05rem);
+      margin-bottom: 0.35rem;
+      color: #333;
+    }
+
+    /* MAP */
+    .map-container {
+      margin-top: 16px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 260px;
+      border: 0;
+    }
+
+    /* BUTTON MAP */
+    .btn-map {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--blue);
+      background: transparent;
+      border: 1.6px solid var(--gold);
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-map i {
+      font-size: 1rem;
+      color: var(--orange);
+      transition: color 0.25s ease;
+    }
+
+    .btn-map:hover {
+      background: linear-gradient(135deg, var(--blue), #1a2a4d);
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(20, 33, 61, 0.35);
+    }
+
+    .btn-map:hover i {
+      color: var(--white);
+    }
+
+    /* RESPONSIVE HP */
+    @media (max-width: 480px) {
+      .event-card {
+        padding: 20px 16px;
+      }
+
+      .map-container iframe {
+        height: 220px;
+      }
+
+      .btn-map {
+        font-size: 0.85rem;
+        padding: 7px 16px;
+      }
+    }
+
+
+    footer {
+      padding-top: 1.3rem;
+      padding-bottom: 1rem;
+      animation: fadeIn 2s ease;
+    }
+
+    footer p {
+      font-size: 20px;
+    }
+
+    footer .col {
+      text-align: center;
+    }
+
+    footer a {
+      text-decoration: none;
+    }
+
+    footer ul {
+      padding: 0;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    footer li {
+      list-style: none;
+      display: inline;
+      margin: 0.5rem;
+    }
+
+    footer i {
+      font-size: 2rem;
+      color: var(--blue);
+      transition: all 0.3s ease;
+    }
+
+    footer i:hover {
+      color: var(--orange);
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      .hero::before {
+        background-size: 450px;
+      }
+
+      .hero h2 {
+        font-size: 65px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero h3 {
+        font-size: 20px;
+      }
+
+      .hero p {
+        font-size: 20px;
+      }
+
+      .hero a {
+        font-size: 20px;
+        padding: 10px 28px;
+      }
+
+      .hero .ornamen {
+        width: 400px;
+      }
+
+      .hero .ornamen-kanan {
+        bottom: -1.5rem;
+        right: -2.5rem;
+      }
+
+      .hero .ornamen-kiri {
+        top: -1.5rem;
+        left: -3.5rem;
+      }
+
+      .ukiran-corner {
+        width: 100px;
+        height: 100px;
       }
 
       .section-ornament::before,
       .section-ornament::after {
-        content: "";
-        position: absolute;
-        width: 100px;
-        height: 100px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        opacity: 0.25;
-      }
-
-      .section-ornament::before {
-        left: 10%;
-        top: 50%;
-        transform: translateY(-50%);
-        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,20 50,30 Q40,20 50,10 M50,30 Q60,40 50,50 Q40,40 50,30 M50,50 Q60,60 50,70 Q40,60 50,50 M50,70 Q60,80 50,90 Q40,80 50,70" stroke="%2314213d" stroke-width="2" fill="none"/><circle cx="50" cy="20" r="3" fill="%23fca311"/><circle cx="50" cy="40" r="3" fill="%23fca311"/><circle cx="50" cy="60" r="3" fill="%23fca311"/><circle cx="50" cy="80" r="3" fill="%23fca311"/></svg>');
-      }
-
-      .section-ornament::after {
-        right: 10%;
-        top: 50%;
-        transform: translateY(-50%) scaleX(-1);
-        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,10 Q60,20 50,30 Q40,20 50,10 M50,30 Q60,40 50,50 Q40,40 50,30 M50,50 Q60,60 50,70 Q40,60 50,50 M50,70 Q60,80 50,90 Q40,80 50,70" stroke="%2314213d" stroke-width="2" fill="none"/><circle cx="50" cy="20" r="3" fill="%23fca311"/><circle cx="50" cy="40" r="3" fill="%23fca311"/><circle cx="50" cy="60" r="3" fill="%23fca311"/><circle cx="50" cy="80" r="3" fill="%23fca311"/></svg>');
-      }
-
-      body .home::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        background: linear-gradient(to bottom, rgba(255, 254, 249, 1) 0%, rgba(255, 254, 249, 0) 40%);
-      }
-
-      body .time::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        background-image: url(img/background-ornament-2.png);
-        background-repeat: repeat;
-        background-position: center;
-        opacity: 1;
-      }
-
-      body .rsvp::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        background-image: url(img/background-ornament-2.png);
-        background-repeat: repeat;
-        background-position: center;
-      }
-
-      body .rsvp::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        background: linear-gradient(to bottom, rgba(255, 254, 249, 0) 60%, rgba(255, 254, 249, 1) 100%);
-        pointer-events: none;
-      }
-
-      /* Music Control Button */
-      .music-control {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 9998;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--blue), var(--orange));
-        border: 3px solid var(--gold);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        animation: pulse 2s infinite;
-      }
-
-      .music-control:hover {
-        transform: scale(1.1);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-      }
-
-      .music-control i {
-        font-size: 1.5rem;
-        color: var(--white);
-      }
-
-      @keyframes pulse {
-        0%, 100% {
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-        50% {
-          box-shadow: 0 8px 30px rgba(228, 226, 222, 0.6);
-        }
-      }
-
-      /* Cover Page */
-      .cover-page {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: #fffef9;
-        z-index: 9999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: opacity 0.8s ease, visibility 0.8s ease;
-      }
-
-      .cover-page.hidden {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background-image: url(img/mandala-op15.png);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 600px;
-      }
-
-      .hero {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        min-height: 100vh;
-        padding: 1rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      .hero .ornamen {
-        position: absolute;
-        z-index: 2;
-        width: 700px;
-        opacity: 0.3;
-        animation: fadeInScale 1.5s ease forwards;
-      }
-
-      @keyframes fadeInScale {
-        from {
-          opacity: 0;
-          transform: scale(0.8);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      .hero .ornamen-kanan {
-        bottom: -4rem;
-        right: -5rem;
-        transform: rotate(30deg);
-      }
-
-      .hero .ornamen-kiri {
-        top: -4rem;
-        left: -10rem;
-        transform: rotate(30deg);
-      }
-
-      .hero h2 {
-        font-family: "Ballet";
-        margin: 1.5rem 0;
-        font-size: 90px;
-        color: var(--blue);
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        animation: fadeInUp 1s ease 0.5s backwards;
-        line-height: 1.2;
-      }
-
-      .hero h1 {
-        font-size: 60px;
-        color: var(--blue);
-        animation: fadeInUp 1s ease 0.7s backwards;
-        margin: 0.5rem 0;
-      }
-
-      .hero h3 {
-        margin: 1.5rem 0 0.5rem 0;
-        font-size: 22px;
-        font-style: italic;
-        color: var(--blue);
-        animation: fadeInUp 1s ease 0.9s backwards;
-      }
-
-      .hero p {
-        font-size: 24px;
-        color: var(--blue);
-        animation: fadeInUp 1s ease 1.1s backwards;
-        margin: 0.5rem 0;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .hero a {
-        font-size: 24px;
-        color: var(--white);
-        background-color: var(--blue);
-        box-shadow: 0 4px 10px var(--shadow);
-        border-radius: 20px;
-        padding: 10px 30px;
-        text-decoration: none;
-        display: inline-block;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        margin-top: 2rem;
-        animation: fadeInUp 1s ease 1.3s backwards;
-      }
-
-      .hero a:hover {
-        color: var(--blue);
-        background-color: var(--white);
-        border: 1px solid var(--blue);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 15px var(--shadow);
-      }
-
-      /* Main Content - Hidden by default */
-      .main-content {
-        display: none;
-      }
-
-      .main-content.active {
-        display: block;
-      }
-
-      .home,
-      .time,
-      .rsvp {
-        text-align: center;
-        justify-content: center;
-        padding: 2rem 1rem;
-      }
-
-      .home {
-        position: relative;
-      }
-
-      .home .ukiran-corner {
-        opacity: 0.2;
+        width: 70px;
+        height: 70px;
       }
 
       .home h1 {
-        font-size: 60px;
-        padding-top: 5rem;
+        font-size: 45px;
+        padding-top: 3rem;
         padding-bottom: 2rem;
-        font-style: italic;
-        animation: fadeInDown 1s ease;
-      }
-
-      /* Family Photo Section */
-      .family-photo-section {
-        margin: 3rem auto;
-        padding: 2rem 0;
-        max-width: 800px;
-        animation: fadeIn 1.5s ease;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      @keyframes fadeInDown {
-        from {
-          opacity: 0;
-          transform: translateY(-30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes fadeInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes fadeInRight {
-        from {
-          opacity: 0;
-          transform: translateX(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
       }
 
       .family-photo-container {
-        position: relative;
-        width: 90%;
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 0;
-        transition: all 0.4s ease;
-      }
-
-      .family-photo-container:hover {
-        transform: translateY(-8px) scale(1.02);
-      }
-
-      .family-photo-frame {
-        position: relative;
-        width: 100%;
-        padding-top: 100%;
-        overflow: hidden;
-      }
-
-      .family-photo-frame::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-image: url('https://swalapatra.com/wp-content/uploads/2022/04/Frame-Boho-Brown-Newest.png');
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        z-index: 2;
-        pointer-events: none;
+        width: 95%;
+        max-width: 500px;
       }
 
       .family-photo-frame img {
-        position: absolute;
-        inset: 50%;
-        transform: translate(-50%, -50%) scale(1.08);
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center top;
-        border-radius: 50%;
-        z-index: 1;
-      }
-
-      .home p {
-        padding-bottom: 0.6rem;
-        animation: fadeInUp 1.2s ease;
+        width: 68%;
+        height: 68%;
       }
 
       .home h2 {
-        font-style: italic;
-        font-size: 40px;
-        padding: 0.5rem;
-        background: linear-gradient(135deg, var(--blue), var(--orange));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-weight: 700;
-        animation: fadeInScale 1s ease;
-      }
-
-      @keyframes fadeInScale {
-        from {
-          opacity: 0;
-          transform: scale(0.9);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      .home p {
-        font-size: 20px;
-        font-style: italic;
-      }
-
-      .home .p2 {
-        padding-top: 0.7rem;
+        font-size: 32px;
       }
 
       .home h3 {
-        font-style: italic;
-        font-weight: 300;
-        font-size: 26px;
-        animation: fadeInUp 1.4s ease;
+        font-size: 22px;
       }
 
-      .home .ornamen-home,
-      .time .ornamen-time {
-        padding-top: 3rem;
-        padding-bottom: 1rem;
-        width: 100%;
-        max-width: 500px;
-        justify-content: center;
-        margin-left: auto;
-        margin-right: auto;
+      .home p {
+        font-size: 18px;
       }
 
-      /* Countdown Timer */
       .countdown-container {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin: 3rem 0;
-        flex-wrap: wrap;
-        padding: 0 10px;
-        animation: fadeInUp 1s ease;
+        gap: 12px;
+        margin: 2.5rem 0;
       }
 
       .countdown-box {
-        background: linear-gradient(135deg, rgba(20, 33, 61, 0.05), rgba(252, 163, 17, 0.05));
-        border: 2px solid var(--gold);
-        border-radius: 15px;
-        padding: 15px;
-        min-width: 80px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-        animation: bounceIn 1s ease;
-      }
-
-      @keyframes bounceIn {
-        0% {
-          opacity: 0;
-          transform: scale(0.3);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-        70% {
-          transform: scale(0.9);
-        }
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      .countdown-box:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 30px rgba(252, 163, 17, 0.3);
+        min-width: 75px;
+        padding: 13px;
       }
 
       .countdown-box .number {
-        font-size: 2.5rem;
-        font-weight: 700;
-        display: block;
-        background: linear-gradient(135deg, var(--blue), var(--orange));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        font-size: 2.2rem;
       }
 
       .countdown-box .label {
-        font-size: 0.9rem;
-        font-style: italic;
-        margin-top: 5px;
-        color: var(--blue);
+        font-size: 0.85rem;
       }
 
-      .time {
-        font-style: italic;
+      .time h1.head-time {
+        padding-top: 3rem;
+        font-size: 2.2rem;
       }
 
       .time .col-time {
-        border: 3px solid var(--gold);
-        border-radius: 30px;
-        border-style: double;
-        justify-content: center;
-        align-items: center;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 2rem;
-        background: linear-gradient(135deg, rgba(20, 33, 61, 0.03), rgba(252, 163, 17, 0.03));
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        max-width: 600px;
-        width: 90%;
-        transition: all 0.3s ease;
-        animation: zoomIn 1s ease;
-      }
-
-      @keyframes zoomIn {
-        from {
-          opacity: 0;
-          transform: scale(0.8);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      .time .col-time:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 30px rgba(212, 175, 55, 0.3);
+        padding: 1.7rem;
+        margin: 0 auto;
+        width: 92%;
       }
 
       .time .col-time h2 {
-        font-size: 2.8rem;
-        font-weight: 700;
-        color: var(--blue);
-        margin-bottom: 1rem;
-        line-height: 1.3;
-        animation: fadeInUp 0.8s ease;
+        font-size: 1.8rem;
+        line-height: 1.4;
       }
 
       .time .col-time h2 i {
-        color: var(--orange);
-        margin-right: 0.5rem;
-        font-size: 2.5rem;
-        vertical-align: middle;
+        font-size: 1.6rem;
       }
 
       .time .col-time p {
         font-size: 1.8rem;
-        line-height: 1.8;
-        color: var(--blue);
-        margin-bottom: 0.8rem;
-        animation: fadeInUp 1s ease;
+        line-height: 1.7;
       }
 
       .time .col-time p i {
-        color: var(--gold);
-        margin-right: 0.5rem;
-        font-size: 1.6rem;
-        vertical-align: middle;
+        font-size: 1.5rem;
       }
 
       .time .row p {
-        font-size: 1.8rem;
-        animation: fadeInUp 1.2s ease;
+        font-size: 1.5rem;
       }
 
       .time .row .p-info {
         padding-top: 1.5rem;
-        padding-left: 2rem;
-        padding-right: 2rem;
-        font-size: 1.7rem;
-        animation: fadeInUp 1.4s ease;
-      }
-
-      .time h1.head-time {
-        padding-top: 5rem;
-        padding-bottom: 2rem;
-        animation: fadeInDown 0.8s ease;
-      }
-
-      .time h2 {
-        font-style: italic;
-        padding-bottom: 0.6rem;
-        animation: fadeInUp 1s ease;
-      }
-
-      .time .row h1 {
-        padding: 1rem;
-        animation: fadeInUp 1.6s ease;
-      }
-
-      /* RSVP Form */
-      .rsvp {
-        padding-bottom: 3rem;
-        animation: fadeIn 1s ease;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        font-size: 1.4rem;
       }
 
       .rsvp h1 {
-        padding-top: 2rem;
-        font-size: 3rem;
-        animation: fadeInDown 0.8s ease;
+        font-size: 2.5rem;
       }
 
       .form-container {
-        position: relative;
-        z-index: 10;
-        max-width: 600px;
-        margin: 2rem auto;
-        padding: 2rem;
-        background: linear-gradient(135deg, rgba(20, 33, 61, 0.03), rgba(252, 163, 17, 0.03));
-        border: 2px solid var(--gold);
-        border-radius: 20px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
-        animation: slideInUp 1s ease;
-      }
-
-      @keyframes slideInUp {
-        from {
-          opacity: 0;
-          transform: translateY(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .form-container:hover {
-        box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+        padding: 1.7rem;
+        margin: 1.5rem 20px;
       }
 
       .form-container label {
-        position: relative;
-        z-index: 11;
-        font-size: 1.4rem;
-        font-style: italic;
-        margin-bottom: 0.5rem;
-        display: block;
-        text-align: left;
-        animation: fadeInLeft 0.6s ease;
+        font-size: 1.3rem;
       }
 
       .form-container input,
       .form-container textarea,
       .form-container select {
-        position: relative;
-        z-index: 11;
-        width: 100%;
-        padding: 15px;
-        margin-bottom: 1.5rem;
-        border: 2px solid var(--gold);
-        border-radius: 10px;
-        background-color: rgba(255, 254, 249, 0.98);
-        font-family: "Cormorant Garamond", serif;
-        font-size: 1.2rem;
-        color: var(--blue);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        animation: fadeInRight 0.8s ease;
-      }
-
-      .form-container input:focus,
-      .form-container textarea:focus,
-      .form-container select:focus {
-        outline: none;
-        border-color: var(--orange);
-        box-shadow: 0 0 10px rgba(252, 163, 17, 0.3);
-      }
-
-      .form-container textarea {
-        min-height: 120px;
-        resize: vertical;
+        font-size: 1.1rem;
+        padding: 13px;
       }
 
       .form-container button {
-        position: relative;
-        z-index: 11;
-        width: 100%;
-        padding: 15px;
-        font-size: 1.3rem;
-        font-family: "Cormorant Garamond", serif;
-        font-weight: 600;
-        color: var(--white);
-        background: linear-gradient(135deg, var(--blue), #1a2a4d);
-        border: 2px solid var(--gold);
-        border-radius: 15px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        font-size: 1.2rem;
+        padding: 14px;
       }
 
-      .form-container button:hover:not(:disabled) {
-        background: linear-gradient(135deg, var(--orange), #e09400);
-        color: var(--white);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(252, 163, 17, 0.4);
-      }
-
-      .form-container button:disabled {
-        background: #999;
-        cursor: not-allowed;
-        transform: none;
-        opacity: 0.7;
-      }
-
-      .success-message {
-        display: none;
-        background-color: rgba(76, 175, 80, 0.9);
-        color: white;
-        padding: 15px;
-        border-radius: 10px;
-        margin-top: 1rem;
-        text-align: center;
-        font-size: 1.1rem;
-        animation: slideIn 0.3s ease;
-      }
-
-      .error-message {
-        display: none;
-        background-color: rgba(244, 67, 54, 0.9);
-        color: white;
-        padding: 15px;
-        border-radius: 10px;
-        margin-top: 1rem;
-        text-align: center;
-        font-size: 1.1rem;
-        animation: slideIn 0.3s ease;
-      }
-
-      @keyframes slideIn {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Messages Display */
       .messages-container {
-        max-width: 500px;
-        margin: 1.5rem auto;
-        padding: 0.8rem;
-      }
-
-      .loading-message {
-        text-align: center;
-        padding: 1.5rem;
-        color: var(--blue);
-        font-style: italic;
-        font-size: 1rem;
+        padding: 0.8rem 15px;
       }
 
       .message-item {
-        background: linear-gradient(135deg, rgba(20, 33, 61, 0.03), rgba(252, 163, 17, 0.03));
-        border: 1px solid var(--gold);
-        border-radius: 12px;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        text-align: left;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-        transition: all 0.3s ease;
-        animation: fadeInMessage 0.5s ease;
-      }
-
-      @keyframes fadeInMessage {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .message-item:hover {
-        transform: translateX(5px);
-        box-shadow: 0 5px 12px rgba(212, 175, 55, 0.3);
+        padding: 0.9rem;
       }
 
       .message-item .name {
-        font-weight: 700;
-        font-size: 1.1rem;
-        margin-bottom: 0.4rem;
-        color: var(--orange);
-      }
-
-      .message-item .status {
-        display: inline-block;
-        padding: 4px 12px;
-        border-radius: 15px;
-        font-size: 0.8rem;
-        margin-bottom: 0.4rem;
-        font-weight: 600;
-      }
-
-      .message-item .status.hadir {
-        background-color: rgba(76, 175, 80, 0.8);
-        color: white;
-      }
-
-      .message-item .status.tidak-hadir {
-        background-color: rgba(244, 67, 54, 0.8);
-        color: white;
+        font-size: 1rem;
       }
 
       .message-item .message-text {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+      }
+
+      .music-control {
+        bottom: 18px;
+        right: 18px;
+        width: 48px;
+        height: 48px;
+      }
+
+      .music-control i {
+        font-size: 1.4rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero::before {
+        background-size: 350px;
+      }
+
+      .hero h2 {
+        font-size: 55px;
+        margin: 1.2rem 0;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero h3 {
+        font-size: 18px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .hero a {
+        font-size: 18px;
+        padding: 10px 24px;
+      }
+
+      .hero .ornamen {
+        width: 320px;
+      }
+
+      .hero .ornamen-kanan {
+        bottom: -0.5rem;
+        right: -1.5rem;
+      }
+
+      .hero .ornamen-kiri {
+        top: -0.5rem;
+        left: -2.5rem;
+      }
+
+      .ukiran-corner {
+        width: 80px;
+        height: 80px;
+      }
+
+      .section-ornament::before,
+      .section-ornament::after {
+        width: 60px;
+        height: 60px;
+      }
+
+      .home h1 {
+        font-size: 38px;
+        padding-top: 2.5rem;
+        padding-bottom: 1.8rem;
+      }
+
+      .family-photo-section {
+        margin: 2rem auto;
+        padding: 1.5rem 0;
+      }
+
+      .family-photo-container {
+        width: 95%;
+        max-width: 450px;
+      }
+
+      .family-photo-frame img {
+        width: 66%;
+        height: 66%;
+      }
+
+      .home h2 {
+        font-size: 28px;
+      }
+
+      .home h3 {
+        font-size: 19px;
+      }
+
+      .home p {
+        font-size: 17px;
+      }
+
+      .countdown-container {
+        gap: 10px;
+        margin: 2rem 0;
+      }
+
+      .countdown-box {
+        min-width: 68px;
+        padding: 12px 10px;
+      }
+
+      .countdown-box .number {
+        font-size: 1.8rem;
+      }
+
+      .countdown-box .label {
+        font-size: 0.75rem;
+      }
+
+      .time h1.head-time {
+        font-size: 2rem;
+        padding-top: 2.5rem;
+      }
+
+      .time .col-time {
+        padding: 1.3rem;
+        margin: 0 auto;
+        width: 95%;
+        border-radius: 20px;
+      }
+
+      .time .col-time h2 {
+        font-size: 1.5rem;
         line-height: 1.5;
-        font-style: italic;
-        margin-top: 0.4rem;
-        color: var(--blue);
+        word-wrap: break-word;
+      }
+
+      .time .col-time h2 i {
+        font-size: 1.3rem;
+      }
+
+      .time .col-time p {
+        font-size: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .time .col-time p i {
+        font-size: 1.2rem;
+      }
+
+      .time .row p {
+        font-size: 1.3rem;
+      }
+
+      .time .row .p-info {
+        padding-top: 1.3rem;
+        font-size: 1.2rem;
+      }
+
+      .rsvp h1 {
+        font-size: 2.2rem;
+      }
+
+      .form-container {
+        padding: 1.5rem;
+        margin: 1.2rem 15px;
+      }
+
+      .form-container label {
+        font-size: 1.2rem;
+      }
+
+      .form-container input,
+      .form-container textarea,
+      .form-container select {
+        font-size: 1rem;
+        padding: 11px;
+      }
+
+      .form-container button {
+        font-size: 1.1rem;
+        padding: 13px;
+      }
+
+      .messages-container {
+        padding: 0.8rem 12px;
+      }
+
+      .message-item {
+        padding: 0.85rem;
+      }
+
+      .message-item .name {
+        font-size: 0.95rem;
+      }
+
+      .message-item .status {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+      }
+
+      .message-item .message-text {
+        font-size: 0.85rem;
       }
 
       .message-item .timestamp {
-        font-size: 0.75rem;
-        color: #888;
-        margin-top: 0.4rem;
-        font-style: italic;
-      }
-
-      footer {
-        padding-top: 1.3rem;
-        padding-bottom: 1rem;
-        animation: fadeIn 2s ease;
+        font-size: 0.7rem;
       }
 
       footer p {
-        font-size: 20px;
-      }
-
-      footer .col {
-        text-align: center;
-      }
-
-      footer a {
-        text-decoration: none;
-      }
-
-      footer ul {
-        padding: 0;
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-      }
-
-      footer li {
-        list-style: none;
-        display: inline;
-        margin: 0.5rem;
+        font-size: 17px;
       }
 
       footer i {
-        font-size: 2rem;
-        color: var(--blue);
-        transition: all 0.3s ease;
+        font-size: 1.7rem;
       }
 
-      footer i:hover {
-        color: var(--orange);
-        transform: scale(1.2) rotate(5deg);
+      footer li {
+        margin: 0.4rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .hero h2 {
+        font-size: 50px;
       }
 
-      /* Media Queries */
-      @media (max-width: 768px) {
-        .hero::before {
-          background-size: 450px;
-        }
-
-        .hero h2 {
-          font-size: 65px;
-        }
-
-        .hero h1 {
-          font-size: 38px;
-        }
-
-        .hero h3 {
-          font-size: 20px;
-        }
-
-        .hero p {
-          font-size: 20px;
-        }
-
-        .hero a {
-          font-size: 20px;
-          padding: 10px 28px;
-        }
-
-        .hero .ornamen {
-          width: 400px;
-        }
-
-        .hero .ornamen-kanan {
-          bottom: -1.5rem;
-          right: -2.5rem;
-        }
-
-        .hero .ornamen-kiri {
-          top: -1.5rem;
-          left: -3.5rem;
-        }
-
-        .ukiran-corner {
-          width: 100px;
-          height: 100px;
-        }
-
-        .section-ornament::before,
-        .section-ornament::after {
-          width: 70px;
-          height: 70px;
-        }
-
-        .home h1 {
-          font-size: 45px;
-          padding-top: 3rem;
-          padding-bottom: 2rem;
-        }
-
-        .family-photo-container {
-          width: 95%;
-          max-width: 500px;
-        }
-
-        .family-photo-frame img {
-          width: 68%;
-          height: 68%;
-        }
-
-        .home h2 {
-          font-size: 32px;
-        }
-
-        .home h3 {
-          font-size: 22px;
-        }
-
-        .home p {
-          font-size: 18px;
-        }
-
-        .countdown-container {
-          gap: 12px;
-          margin: 2.5rem 0;
-        }
-
-        .countdown-box {
-          min-width: 75px;
-          padding: 13px;
-        }
-
-        .countdown-box .number {
-          font-size: 2.2rem;
-        }
-
-        .countdown-box .label {
-          font-size: 0.85rem;
-        }
-
-        .time h1.head-time {
-          padding-top: 3rem;
-          font-size: 2.2rem;
-        }
-
-        .time .col-time {
-          padding: 1.7rem;
-          margin: 0 auto;
-          width: 92%;
-        }
-
-        .time .col-time h2 {
-          font-size: 1.8rem;
-          line-height: 1.4;
-        }
-
-        .time .col-time h2 i {
-          font-size: 1.6rem;
-        }
-
-        .time .col-time p {
-          font-size: 1.8rem;
-          line-height: 1.7;
-        }
-
-        .time .col-time p i {
-          font-size: 1.5rem;
-        }
-
-        .time .row p {
-          font-size: 1.5rem;
-        }
-
-        .time .row .p-info {
-          padding-top: 1.5rem;
-          padding-left: 1.5rem;
-          padding-right: 1.5rem;
-          font-size: 1.4rem;
-        }
-
-        .rsvp h1 {
-          font-size: 2.5rem;
-        }
-
-        .form-container {
-          padding: 1.7rem;
-          margin: 1.5rem 20px;
-        }
-
-        .form-container label {
-          font-size: 1.3rem;
-        }
-
-        .form-container input,
-        .form-container textarea,
-        .form-container select {
-          font-size: 1.1rem;
-          padding: 13px;
-        }
-
-        .form-container button {
-          font-size: 1.2rem;
-          padding: 14px;
-        }
-
-        .messages-container {
-          padding: 0.8rem 15px;
-        }
-
-        .message-item {
-          padding: 0.9rem;
-        }
-
-        .message-item .name {
-          font-size: 1rem;
-        }
-
-        .message-item .message-text {
-          font-size: 0.9rem;
-        }
-
-        .music-control {
-          bottom: 18px;
-          right: 18px;
-          width: 48px;
-          height: 48px;
-        }
-
-        .music-control i {
-          font-size: 1.4rem;
-        }
+      .hero h1 {
+        font-size: 28px;
       }
 
-      @media (max-width: 480px) {
-        .hero::before {
-          background-size: 350px;
-        }
-
-        .hero h2 {
-          font-size: 55px;
-          margin: 1.2rem 0;
-        }
-
-        .hero h1 {
-          font-size: 32px;
-        }
-
-        .hero h3 {
-          font-size: 18px;
-        }
-
-        .hero p {
-          font-size: 18px;
-        }
-
-        .hero a {
-          font-size: 18px;
-          padding: 10px 24px;
-        }
-
-        .hero .ornamen {
-          width: 320px;
-        }
-
-        .hero .ornamen-kanan {
-          bottom: -0.5rem;
-          right: -1.5rem;
-        }
-
-        .hero .ornamen-kiri {
-          top: -0.5rem;
-          left: -2.5rem;
-        }
-
-        .ukiran-corner {
-          width: 80px;
-          height: 80px;
-        }
-
-        .section-ornament::before,
-        .section-ornament::after {
-          width: 60px;
-          height: 60px;
-        }
-
-        .home h1 {
-          font-size: 38px;
-          padding-top: 2.5rem;
-          padding-bottom: 1.8rem;
-        }
-
-        .family-photo-section {
-          margin: 2rem auto;
-          padding: 1.5rem 0;
-        }
-
-        .family-photo-container {
-          width: 95%;
-          max-width: 450px;
-        }
-
-        .family-photo-frame img {
-          width: 66%;
-          height: 66%;
-        }
-
-        .home h2 {
-          font-size: 28px;
-        }
-
-        .home h3 {
-          font-size: 19px;
-        }
-
-        .home p {
-          font-size: 17px;
-        }
-
-        .countdown-container {
-          gap: 10px;
-          margin: 2rem 0;
-        }
-
-        .countdown-box {
-          min-width: 68px;
-          padding: 12px 10px;
-        }
-
-        .countdown-box .number {
-          font-size: 1.8rem;
-        }
-
-        .countdown-box .label {
-          font-size: 0.75rem;
-        }
-
-        .time h1.head-time {
-          font-size: 2rem;
-          padding-top: 2.5rem;
-        }
-
-        .time .col-time {
-          padding: 1.3rem;
-          margin: 0 auto;
-          width: 95%;
-          border-radius: 20px;
-        }
-
-        .time .col-time h2 {
-          font-size: 1.5rem;
-          line-height: 1.5;
-          word-wrap: break-word;
-        }
-
-        .time .col-time h2 i {
-          font-size: 1.3rem;
-        }
-
-        .time .col-time p {
-          font-size: 1.5rem;
-          line-height: 1.6;
-        }
-
-        .time .col-time p i {
-          font-size: 1.2rem;
-        }
-
-        .time .row p {
-          font-size: 1.3rem;
-        }
-
-        .time .row .p-info {
-          padding-top: 1.3rem;
-          font-size: 1.2rem;
-        }
-
-        .rsvp h1 {
-          font-size: 2.2rem;
-        }
-
-        .form-container {
-          padding: 1.5rem;
-          margin: 1.2rem 15px;
-        }
-
-        .form-container label {
-          font-size: 1.2rem;
-        }
-
-        .form-container input,
-        .form-container textarea,
-        .form-container select {
-          font-size: 1rem;
-          padding: 11px;
-        }
-
-        .form-container button {
-          font-size: 1.1rem;
-          padding: 13px;
-        }
-
-        .messages-container {
-          padding: 0.8rem 12px;
-        }
-
-        .message-item {
-          padding: 0.85rem;
-        }
-
-        .message-item .name {
-          font-size: 0.95rem;
-        }
-
-        .message-item .status {
-          font-size: 0.75rem;
-          padding: 4px 10px;
-        }
-
-        .message-item .message-text {
-          font-size: 0.85rem;
-        }
-
-        .message-item .timestamp {
-          font-size: 0.7rem;
-        }
-
-        footer p {
-          font-size: 17px;
-        }
-
-        footer i {
-          font-size: 1.7rem;
-        }
-
-        footer li {
-          margin: 0.4rem;
-        }
+      .ukiran-corner {
+        width: 60px;
+        height: 60px;
       }
 
-      @media (max-width: 360px) {
-        .hero h2 {
-          font-size: 50px;
-        }
-
-        .hero h1 {
-          font-size: 28px;
-        }
-
-        .ukiran-corner {
-          width: 60px;
-          height: 60px;
-        }
-
-        .section-ornament::before,
-        .section-ornament::after {
-          width: 50px;
-          height: 50px;
-        }
-
-        .home h1 {
-          font-size: 34px;
-        }
-
-        .home h2 {
-          font-size: 26px;
-        }
-
-        .home p {
-          font-size: 16px;
-        }
-
-        .countdown-box {
-          min-width: 62px;
-          padding: 10px 8px;
-        }
-
-        .countdown-box .number {
-          font-size: 1.6rem;
-        }
-
-        .countdown-box .label {
-          font-size: 0.7rem;
-        }
+      .section-ornament::before,
+      .section-ornament::after {
+        width: 50px;
+        height: 50px;
       }
-    </style>
-  </head>
-  <body>
-    <!-- Music Control Button -->
-    <div class="music-control" id="musicControl">
-      <i class="bi bi-music-note-beamed" id="musicIcon"></i>
-    </div>
 
-    <!-- Audio Element for Balinese Music -->
-    <audio id="bgMusic" loop>
-      <source src="assets/LaguBali.mp3" type="audio/mpeg">
-    </audio>
+      .home h1 {
+        font-size: 34px;
+      }
 
-    <!-- Cover Page -->
-    <div class="cover-page" id="coverPage">
-      <section class="hero">
-        <main>
-          <img
-            src="img/bunga-1.png"
-            alt="Ornamen Kanan Bawah"
-            class="ornamen ornamen-kanan"
-          />
-          <img
-            src="img/bunga-2.png"
-            alt="Ornamen Kiri Atas"
-            class="ornamen ornamen-kiri"
-          />
-          <h2>Upakara Mepandes</h2>
-          <h3>Kepada</h3>
-          <p>Bapak/Ibu/Saudara/i</p>
-          <a href="#" id="openInvitation"><i class="bi bi-envelope-open"></i> Buka Undangan</a>
-        </main>
-      </section>
-    </div>
+      .home h2 {
+        font-size: 26px;
+      }
 
-    <!-- Main Content -->
-    <div class="main-content" id="mainContent">
-      <section id="home" class="home">
-        <div class="ukiran-corner ukiran-top-left"></div>
-        <div class="ukiran-corner ukiran-top-right"></div>
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <h1>Om Swastyastu</h1>
-              <div class="ukiran-divider"></div>
-              <p class="p1 col-lg-8 col-md-10 mx-auto">
-               Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/Tuhan Yang Maha Esa, perkenankan kami mengundang Bapak/Ibu/Saudara/i pada Upacara Manusa Yadnya (Mepandes) putra-putri kami.
-              </p>
-                <!-- Family Photo -->
-              <div class="family-photo-section">
-                <div class="family-photo-container">
-                  <div class="family-photo-frame">
-                    <img src="img/family.png" alt="Foto Keluarga" />
-                  </div>
-                </div>
-              </div>
-              <img
-                src="img/ornamen-batas.png"
-                alt="Ornamen Batas"
-                class="ornamen-home"
-              />
-                <h2>I Gede Mariyasa</h2>
-                <h2>I Kadek Meredana</h2>
-                <p class="p2">Putra dari pasangan</p>
-                <h3>I Wayan Jumuarta dan Ni Nyoman Kariami</h3>
-              </div>
-              <img
-                src="img/ornamen-batas.png"
-                alt="Ornamen Batas"
-                class="ornamen-home"
-              />
-                <h2>I Wayan Merta</h2>
-                <h2>Ni Made Srianingsih</h2>
-                <p class="p2">Putra dan Putri dari pasangan</p>
-                <h3>I Nengah Neka dan Ni Wayan Selamet</h3>
-              </div>
-              <img
-                src="img/ornamen-batas.png"
-                alt="Ornamen Batas"
-                class="ornamen-home"
-              />
-                <h2>I Putu Arya Kusumadana</h2>
-                <h2>Ni Kadek Noviani</h2>
-                <p class="p2">Putra dan Putri dari pasangan</p>
-                <h3>I Nyoman Sumarta dan Ni Kadek Riadi</h3>
-              </div>
-               <img
-                src="img/ornamen-batas.png"
-                alt="Ornamen Batas"
-                class="ornamen-home"
-              />
-                <h2>Ni luh Putu Juniasih</h2>
-                <h2>I Kadek Agus Widiarta</h2>
-                <p class="p2">Putra dan Putri dari pasangan</p>
-                <h3>I Wayan Cenik Suryantara dan Ni Made Sukeni </h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      .home p {
+        font-size: 16px;
+      }
 
-      <section class="time" id="time">
-        <div class="ukiran-corner ukiran-top-left"></div>
-        <div class="ukiran-corner ukiran-top-right"></div>
-        <div class="container">
-          <div class="row">
-            <h1 class="head-time">Waktu dan Tempat</h1>
+      .countdown-box {
+        min-width: 62px;
+        padding: 10px 8px;
+      }
+
+      .countdown-box .number {
+        font-size: 1.6rem;
+      }
+
+      .countdown-box .label {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Music Control Button -->
+  <div class="music-control" id="musicControl">
+    <i class="bi bi-music-note-beamed" id="musicIcon"></i>
+  </div>
+
+  <!-- Audio Element for Balinese Music -->
+  <audio id="bgMusic" loop>
+    <source src="assets/LaguBali.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Cover Page -->
+  <div class="cover-page" id="coverPage">
+    <section class="hero">
+      <main>
+        <img src="img/bunga-1.png" alt="Ornamen Kanan Bawah" class="ornamen ornamen-kanan" />
+        <img src="img/bunga-2.png" alt="Ornamen Kiri Atas" class="ornamen ornamen-kiri" />
+        <h2>Upakara Mepandes</h2>
+        <h3>Kepada</h3>
+        <p>Bapak/Ibu/Saudara/i</p>
+        <a href="#" id="openInvitation"><i class="bi bi-envelope-open"></i> Buka Undangan</a>
+      </main>
+    </section>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content" id="mainContent">
+    <section id="home" class="home">
+      <div class="ukiran-corner ukiran-top-left"></div>
+      <div class="ukiran-corner ukiran-top-right"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1>Om Swastyastu</h1>
             <div class="ukiran-divider"></div>
-            
-            <div class="countdown-container">
-              <div class="countdown-box">
-                <span class="number" id="days">0</span>
-                <span class="label">Hari</span>
-              </div>
-              <div class="countdown-box">
-                <span class="number" id="hours">0</span>
-                <span class="label">Jam</span>
-              </div>
-              <div class="countdown-box">
-                <span class="number" id="minutes">0</span>
-                <span class="label">Menit</span>
-              </div>
-              <div class="countdown-box">
-                <span class="number" id="seconds">0</span>
-                <span class="label">Detik</span>
-              </div>
-            </div>
-
-            <div class="col-time">
-              <h2><i class="bi bi-calendar-event"></i> Rabu, 21 Januari 2026</h2>
-              <p><i class="bi bi-clock"></i> 11.00 WITA - Selesai</p>
-              <p>
-                <i class="bi bi-geo-alt-fill"></i> Jl. Gn. Agung, Desa Muncan, Kabupaten Karangasem, Bali 
-              </p>
-            </div>
-
-            <p class="p-info">
-              Merupakan suatu kebahagiaan dan kehormatan bagi kami apabila Bapak/
-              Ibu/ Saudara/i berkenan hadir untuk memberikan doa restu.
+            <p class="p1 col-lg-8 col-md-10 mx-auto">
+              Atas Asung Kertha Wara Nugraha Ida Sang Hyang Widhi Wasa/Tuhan Yang Maha Esa, perkenankan kami mengundang
+              Bapak/Ibu/Saudara/i pada Upacara Manusa Yadnya (Mepandes) putra-putri kami.
             </p>
-            <p>Atas kehadiran dan doa restunya kami ucapkan terimakasih</p>
-            <h1 class="h1-2">Om Shanti Shanti Shanti Om</h1>
-            <img
-              src="img/ornamen-batas.png"
-              alt="Ornamen Batas"
-              class="ornamen-time"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section id="rsvp" class="rsvp">
-        <div class="ukiran-corner ukiran-top-left"></div>
-        <div class="ukiran-corner ukiran-top-right"></div>
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <h1>Mohon Doa Restu</h1>
-              <h1>Ucapan Doa</h1>
-              <div class="ukiran-divider"></div>
-
-              <div class="form-container">
-                <form id="messageForm">
-                  <label for="name">Nama</label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    name="name" 
-                    placeholder="Masukkan nama Anda"
-                    required
-                  />
-
-                  <label for="attendance">Konfirmasi Kehadiran</label>
-                  <select id="attendance" name="attendance" required>
-                    <option value="">Pilih kehadiran</option>
-                    <option value="hadir">Hadir</option>
-                    <option value="tidak-hadir">Tidak Hadir</option>
-                  </select>
-
-                  <label for="message">Ucapan & Doa</label>
-                  <textarea 
-                    id="message" 
-                    name="message" 
-                    placeholder="Tuliskan ucapan dan doa Anda"
-                    required
-                  ></textarea>
-
-                  <button type="submit" id="submitBtn">Kirim Ucapan</button>
-                </form>
-                <div class="success-message" id="successMessage">
-                  ✓ Terima kasih! Ucapan Anda telah terkirim.
-                </div>
-                <div class="error-message" id="errorMessage">
-                  ✗ Maaf, terjadi kesalahan. Silakan coba lagi.
+            <!-- Family Photo -->
+            <div class="family-photo-section">
+              <div class="family-photo-container">
+                <div class="family-photo-frame">
+                  <img src="img/family.png" alt="Foto Keluarga" />
                 </div>
               </div>
-
-              <!-- Messages Display -->
-              <div class="messages-container" id="messagesContainer">
-                <div class="loading-message">Memuat pesan...</div>
-              </div>
             </div>
+            <img src="img/ornamen-batas.png" alt="Ornamen Batas" class="ornamen-home" />
+            <h2>I Gede Mariyasa</h2>
+            <h2>I Kadek Meredana</h2>
+            <p class="p2">Putra dari pasangan</p>
+            <h3>I Wayan Jumuarta dan Ni Nyoman Kariami</h3>
+          </div>
+          <img src="img/ornamen-batas.png" alt="Ornamen Batas" class="ornamen-home" />
+          <h2>I Wayan Merta</h2>
+          <h2>Ni Made Srianingsih</h2>
+          <p class="p2">Putra dan Putri dari pasangan</p>
+          <h3>I Nengah Neka dan Ni Wayan Selamet</h3>
+        </div>
+        <img src="img/ornamen-batas.png" alt="Ornamen Batas" class="ornamen-home" />
+        <h2>I Putu Arya Kusumadana</h2>
+        <h2>Ni Kadek Noviani</h2>
+        <p class="p2">Putra dan Putri dari pasangan</p>
+        <h3>I Nyoman Sumarta dan Ni Kadek Riadi</h3>
+      </div>
+      <img src="img/ornamen-batas.png" alt="Ornamen Batas" class="ornamen-home" />
+      <h2>Ni luh Putu Juniasih</h2>
+      <h2>I Kadek Agus Widiarta</h2>
+      <p class="p2">Putra dan Putri dari pasangan</p>
+      <h3>I Wayan Cenik Suryantara dan Ni Made Sukeni </h3>
+  </div>
+  </div>
+  </div>
+  </div>
+  </section>
+  <section class="time" id="time">
+    <!-- Ornamen Pojok -->
+    <div class="ukiran-corner ukiran-top-left"></div>
+    <div class="ukiran-corner ukiran-top-right"></div>
+
+    <div class="container">
+      <div class="row text-center">
+        <h1 class="head-time">Waktu dan Tempat</h1>
+        <div class="ukiran-divider"></div>
+
+        <!-- COUNTDOWN -->
+        <div class="countdown-container">
+          <div class="countdown-box">
+            <span class="number" id="days">0</span>
+            <span class="label">Hari</span>
+          </div>
+          <div class="countdown-box">
+            <span class="number" id="hours">0</span>
+            <span class="label">Jam</span>
+          </div>
+          <div class="countdown-box">
+            <span class="number" id="minutes">0</span>
+            <span class="label">Menit</span>
+          </div>
+          <div class="countdown-box">
+            <span class="number" id="seconds">0</span>
+            <span class="label">Detik</span>
           </div>
         </div>
-      </section>
 
-      <footer>
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <ul>
-                   <li>
-  <a href="https://instagram.com/yanmerta_88" target="_blank" aria-label="Instagram">
-    <i class="bi bi-instagram"></i>
-  </a>
-</li>
-
-<li>
-  <a href="https://www.facebook.com/share/1XbheAvaf5/" target="_blank" aria-label="Facebook">
-    <i class="bi bi-facebook"></i>
-  </a>
-</li>
-
-<li>
-  <a href="https://www.linkedin.com/in/yan-merta-533914265?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn">
-    <i class="bi bi-linkedin"></i>
-  </a>
-</li>
-              </ul>
-            </div>
-          </div>
+        <!-- INFO WAKTU -->
+        <div class="col-time">
+          <h2><i class="bi bi-calendar-event"></i> Rabu, 21 Januari 2026</h2>
+          <p><i class="bi bi-clock"></i> 11.00 WITA - Selesai</p>
+          <p>
+            <i class="bi bi-geo-alt-fill"></i>
+            Jl. Gn. Agung, Desa Muncan, Kabupaten Karangasem, Bali
+          </p>
         </div>
-      </footer>
+
+        <!-- MAP -->
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps?q=Desa+Muncan+Karangasem+Bali&output=embed" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <!-- BUTTON MAP -->
+        <a href="https://www.google.com/maps?q=Desa+Muncan+Karangasem+Bali" target="_blank" class="btn-map">
+          <i class="bi bi-geo-alt-fill"></i>
+          Buka di Google Maps
+        </a>
+        <!-- PEMBATAS -->
+        <div class="ukiran-divider divider-small"></div>
+
+        <!-- TEKS PENUTUP -->
+        <p class="p-info">
+          Merupakan suatu kebahagiaan dan kehormatan bagi kami apabila Bapak/Ibu/
+          Saudara/i berkenan hadir untuk memberikan doa restu.
+        </p>
+
+        <p class="p-info">
+          Atas kehadiran dan doa restunya kami ucapkan terima kasih.
+        </p>
+
+        <h1 class="h1-2">Om Shanti Shanti Shanti Om</h1>
+
+        <img src="img/ornamen-batas.png" alt="Ornamen Batas" class="ornamen-time" />
+      </div>
     </div>
+  </section>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
-      crossorigin="anonymous"
-    ></script>
 
-    <script>
-      // ===== KONFIGURASI GOOGLE SHEETS =====
-      // GANTI URL INI DENGAN URL GOOGLE APPS SCRIPT ANDA
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwZhLaAVlPiCgs9t4uIZD8vhNkCdjTSnU3uG7jNFaFiScSLHKOt96hHi8g8TM3SAJy75Q/exec';
-      
-      // ===== Music Control =====
-      const bgMusic = document.getElementById('bgMusic');
-      const musicControl = document.getElementById('musicControl');
-      const musicIcon = document.getElementById('musicIcon');
-      let isPlaying = false;
+  <section id="rsvp" class="rsvp">
+    <div class="ukiran-corner ukiran-top-left"></div>
+    <div class="ukiran-corner ukiran-top-right"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1>Ucapan Doa</h1>
+          <div class="ukiran-divider"></div>
 
-      musicControl.addEventListener('click', function() {
-        if (isPlaying) {
-          bgMusic.pause();
-          musicIcon.className = 'bi bi-music-note-beamed';
-          isPlaying = false;
-        } else {
-          bgMusic.play().catch(e => console.log('Music play failed:', e));
-          musicIcon.className = 'bi bi-pause-circle';
-          isPlaying = true;
-        }
-      });
+          <div class="form-container">
+            <form id="messageForm">
+              <label for="name">Nama</label>
+              <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required />
 
-      // ===== Open Invitation =====
-      document.getElementById('openInvitation').addEventListener('click', function(e) {
-        e.preventDefault();
-        document.getElementById('coverPage').classList.add('hidden');
-        document.getElementById('mainContent').classList.add('active');
-        
+              <label for="attendance">Konfirmasi Kehadiran</label>
+              <select id="attendance" name="attendance" required>
+                <option value="">Pilih kehadiran</option>
+                <option value="hadir">Hadir</option>
+                <option value="tidak-hadir">Tidak Hadir</option>
+              </select>
+
+              <label for="message">Ucapan & Doa</label>
+              <textarea id="message" name="message" placeholder="Tuliskan ucapan dan doa Anda" required></textarea>
+
+              <button type="submit" id="submitBtn">Kirim Ucapan</button>
+            </form>
+            <div class="success-message" id="successMessage">
+              ✓ Terima kasih! Ucapan Anda telah terkirim.
+            </div>
+            <div class="error-message" id="errorMessage">
+              ✗ Maaf, terjadi kesalahan. Silakan coba lagi.
+            </div>
+          </div>
+
+          <!-- Messages Display -->
+          <div class="messages-container" id="messagesContainer">
+            <div class="loading-message">Memuat pesan...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <ul>
+            <li>
+              <a href="https://instagram.com/yanmerta_88" target="_blank" aria-label="Instagram">
+                <i class="bi bi-instagram"></i>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.facebook.com/share/1XbheAvaf5/" target="_blank" aria-label="Facebook">
+                <i class="bi bi-facebook"></i>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.linkedin.com/in/yan-merta-533914265?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                target="_blank" aria-label="LinkedIn">
+                <i class="bi bi-linkedin"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+    crossorigin="anonymous"></script>
+
+  <script>
+    // ===== KONFIGURASI GOOGLE SHEETS =====
+    // GANTI URL INI DENGAN URL GOOGLE APPS SCRIPT ANDA
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwZhLaAVlPiCgs9t4uIZD8vhNkCdjTSnU3uG7jNFaFiScSLHKOt96hHi8g8TM3SAJy75Q/exec';
+
+    // ===== Music Control =====
+    const bgMusic = document.getElementById('bgMusic');
+    const musicControl = document.getElementById('musicControl');
+    const musicIcon = document.getElementById('musicIcon');
+    let isPlaying = false;
+
+    musicControl.addEventListener('click', function () {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicIcon.className = 'bi bi-music-note-beamed';
+        isPlaying = false;
+      } else {
         bgMusic.play().catch(e => console.log('Music play failed:', e));
         musicIcon.className = 'bi bi-pause-circle';
         isPlaying = true;
-        
-        setTimeout(() => {
-          document.getElementById('home').scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }, 800);
-      });
+      }
+    });
 
-      // ===== Countdown Timer =====
-      const eventDate = new Date('January 21, 2026 11:00:00').getTime();
+    // ===== Open Invitation =====
+    document.getElementById('openInvitation').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById('coverPage').classList.add('hidden');
+      document.getElementById('mainContent').classList.add('active');
 
-      function pad(num) {
-        return num.toString().padStart(2, '0');
+      bgMusic.play().catch(e => console.log('Music play failed:', e));
+      musicIcon.className = 'bi bi-pause-circle';
+      isPlaying = true;
+
+      setTimeout(() => {
+        document.getElementById('home').scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 800);
+    });
+
+    // ===== Countdown Timer =====
+    const eventDate = new Date('January 21, 2026 11:00:00').getTime();
+
+    function pad(num) {
+      return num.toString().padStart(2, '0');
+    }
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
       }
 
-      function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = eventDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        if (distance < 0) {
-          document.getElementById('days').textContent = '00';
-          document.getElementById('hours').textContent = '00';
-          document.getElementById('minutes').textContent = '00';
-          document.getElementById('seconds').textContent = '00';
+      document.getElementById('days').textContent = pad(days);
+      document.getElementById('hours').textContent = pad(hours);
+      document.getElementById('minutes').textContent = pad(minutes);
+      document.getElementById('seconds').textContent = pad(seconds);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ===== Load Messages from Google Sheets =====
+    async function loadMessages() {
+      const messagesContainer = document.getElementById('messagesContainer');
+
+      try {
+        const response = await fetch(SCRIPT_URL);
+        const messages = await response.json();
+
+        messagesContainer.innerHTML = '';
+
+        if (messages.length === 0) {
+          messagesContainer.innerHTML = '<div class="loading-message">Belum ada pesan</div>';
           return;
         }
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        messages.forEach(msg => {
+          const messageDiv = document.createElement('div');
+          messageDiv.className = 'message-item';
 
-        document.getElementById('days').textContent = pad(days);
-        document.getElementById('hours').textContent = pad(hours);
-        document.getElementById('minutes').textContent = pad(minutes);
-        document.getElementById('seconds').textContent = pad(seconds);
-      }
+          const timestamp = new Date(msg.timestamp);
+          const formattedDate = timestamp.toLocaleDateString('id-ID', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+          });
 
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-
-      // ===== Load Messages from Google Sheets =====
-      async function loadMessages() {
-        const messagesContainer = document.getElementById('messagesContainer');
-        
-        try {
-          const response = await fetch(SCRIPT_URL);
-          const messages = await response.json();
-          
-          messagesContainer.innerHTML = '';
-          
-          if (messages.length === 0) {
-            messagesContainer.innerHTML = '<div class="loading-message">Belum ada pesan</div>';
-            return;
-          }
-          
-          messages.forEach(msg => {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'message-item';
-            
-            const timestamp = new Date(msg.timestamp);
-            const formattedDate = timestamp.toLocaleDateString('id-ID', {
-              day: 'numeric',
-              month: 'long',
-              year: 'numeric',
-              hour: '2-digit',
-              minute: '2-digit'
-            });
-            
-            messageDiv.innerHTML = `
+          messageDiv.innerHTML = `
               <div class="name">${msg.name}</div>
               <span class="status ${msg.attendance}">${msg.attendance === 'hadir' ? 'Hadir' : 'Tidak Hadir'}</span>
               <div class="message-text">${msg.message}</div>
               <div class="timestamp">${formattedDate}</div>
             `;
-            messagesContainer.appendChild(messageDiv);
-          });
-        } catch (error) {
-          console.error('Error loading messages:', error);
-          messagesContainer.innerHTML = '<div class="loading-message">Gagal memuat pesan</div>';
-        }
+          messagesContainer.appendChild(messageDiv);
+        });
+      } catch (error) {
+        console.error('Error loading messages:', error);
+        messagesContainer.innerHTML = '<div class="loading-message">Gagal memuat pesan</div>';
       }
+    }
 
-      // ===== Form Submission =====
-      document.getElementById('messageForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const submitBtn = document.getElementById('submitBtn');
-        const successMsg = document.getElementById('successMessage');
-        const errorMsg = document.getElementById('errorMessage');
-        
-        const name = document.getElementById('name').value;
-        const attendance = document.getElementById('attendance').value;
-        const message = document.getElementById('message').value;
+    // ===== Form Submission =====
+    document.getElementById('messageForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
 
-        // Disable button
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Mengirim...';
+      const submitBtn = document.getElementById('submitBtn');
+      const successMsg = document.getElementById('successMessage');
+      const errorMsg = document.getElementById('errorMessage');
 
-        try {
-          const response = await fetch(SCRIPT_URL, {
-            method: 'POST',
-            body: JSON.stringify({
-              name: name,
-              attendance: attendance,
-              message: message
-            })
-          });
+      const name = document.getElementById('name').value;
+      const attendance = document.getElementById('attendance').value;
+      const message = document.getElementById('message').value;
 
-          const result = await response.json();
+      // Disable button
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Mengirim...';
 
-          if (result.success) {
-            successMsg.style.display = 'block';
-            errorMsg.style.display = 'none';
-            this.reset();
-            
-            setTimeout(() => {
-              successMsg.style.display = 'none';
-            }, 3000);
+      try {
+        const response = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            name: name,
+            attendance: attendance,
+            message: message
+          })
+        });
 
-            await loadMessages();
+        const result = await response.json();
 
-            setTimeout(() => {
-              document.getElementById('messagesContainer').scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest'
-              });
-            }, 500);
-          } else {
-            throw new Error('Submission failed');
-          }
-        } catch (error) {
-          console.error('Error:', error);
-          errorMsg.style.display = 'block';
-          successMsg.style.display = 'none';
-          
+        if (result.success) {
+          successMsg.style.display = 'block';
+          errorMsg.style.display = 'none';
+          this.reset();
+
           setTimeout(() => {
-            errorMsg.style.display = 'none';
+            successMsg.style.display = 'none';
           }, 3000);
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Kirim Ucapan';
-        }
-      });
 
-      // ===== Initialize =====
-      loadMessages();
-    </script>
-  </body>
+          await loadMessages();
+
+          setTimeout(() => {
+            document.getElementById('messagesContainer').scrollIntoView({
+              behavior: 'smooth',
+              block: 'nearest'
+            });
+          }, 500);
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        errorMsg.style.display = 'block';
+        successMsg.style.display = 'none';
+
+        setTimeout(() => {
+          errorMsg.style.display = 'none';
+        }, 3000);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Kirim Ucapan';
+      }
+    });
+
+    // ===== Initialize =====
+    loadMessages();
+  </script>
+</body>
+
 </html>
